@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130683608-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-130683608-1');
+  </script>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Iain Dunning - Locations from "City of Sedition"</title>
+  <meta name="description" content="Locations from 'City of Sedition'">
+  <meta name="author" content="Iain Dunning">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+   rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+
+  <!-- Leaflet
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+</head>
+<body>
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container">
+<div class="row" style="margin-top: 10%">
+  <div class="nine columns">
+    <h1>
+      Locations from "City of Sedition"
+    </h1>
+    <p>
+    <a href="https://www.amazon.com/City-Sedition-History-during-Civil/dp/1455584177">"City of Sedition" by John Strausbaugh</a> is a book about New York before, during, and after the American Cival War. Apart from being a great book in general, one thing I found myself noticing during reading it is all the addresses it mentions. The majority are in downtown Manhattan, a reflection of where the vast majority of the population lived at the time. As a modern-day resident of the area, who recognized many of the addresses but not all, I wanted to map out all the addresses in the book that I could and see what those locations look like today.
+    </p>
+  </div>
+  <div class="three columns">
+    <img src="/cos/images/bookcover.jpg" style="width: 100%">
+  </div>
+</div>  <!-- End row -->
+<div class="row">
+<div class="twelve columns">
+
+<hr>
+  
+<h3><i>Part One</i> - "BEFORE: City of Confusion"</h3>
+<a name="map"></a>
+
+<div style="display: inline-block; position: relative; width: 100%;">
+  <div style="margin-top: 75%"></div>
+  <div id="mapid" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+</div>
+
+<script>
+  var mymap = L.map('mapid').setView([40.7217517,-73.9996356], 14);  // Lt. Petrosino Square
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+      maxZoom: 18,
+  }).addTo(mymap);
+  
+  // Some reference points.
+  L.circle([40.710925, -74.005648], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 25
+  }).addTo(mymap).bindPopup("8 Spruce St, 76 story residential tower by Brooklyn Bridge");
+  L.circle([40.712980, -74.013175], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 25
+  }).addTo(mymap).bindPopup("One World Trader Center, a.k.a. Freedom Tower");
+  L.circle([40.712390, -74.008220], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 25
+  }).addTo(mymap).bindPopup("The Woolworth Building, neo-Gothic skyscraper, tallest in the world from 1913 to 1930");
+  
+  
+</script>
+
+___CONTENT___
+
+<hr>
+                
+</div>  <!-- End twelve columns -->
+</div>  <!-- End row -->
+</div>  <!-- End container -->
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

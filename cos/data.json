@@ -1,0 +1,160 @@
+[
+    ["Chapter 1 - 'My God, We Are Ruined!'",
+    [
+        {
+            "name": "academy-of-music",
+            "short": "Pg 3: 'Walt Whitman strolled out of the <b>Academy of Music</b> on 14th Street'",
+            "long": "'Located on the northeast corner of East 14th Street and Irving Place' - Wikipedia",
+            "wiki": "Academy_of_Music_(New_York_City)",
+            "latlon": "40.734004,-73.9891415"
+        },
+        {
+            "name": "fulton-st-ferry",
+            "short": "Pg 3: '<b>Fulton Street</b> where he would catch his <b>ferry</b> home to Brooklyn'",
+            "long": "Now the site of Piers 16 and 17. The primary ferry location in 2018 is Pier 11, between Wall St and Gouverneur Ln.",
+            "latlon": "40.7060121,-74.0024908"
+        },
+        {
+            "name": "trinity-church",
+            "short": "Pg 4: 'Morgan Dix, rector of the elite <b>Trinity Church</b>'",
+            "long": "75 Broadway, opposite Wall St",
+            "latlon": "40.7080544,-74.0124369"
+        }
+    ]],
+    ["Chapter 2 - City of Slavery",
+    [
+        {
+            "name": "brooklyn-navy-yard",
+            "short": "Pg 11: 'the muddy <b>Wallabout Bay</b>... became the Brooklyn Navy Yard in 1806'",
+            "long": "'The name... comes from the Dutch \"Waal bocht\", which means \"Walloons' Bend\", named for its first European settlers: the Walloons, from what is today Wallonia.' - Wikipedia",
+            "wiki": "Wallabout_Bay",
+            "latlon": "40.704296,-73.974517"
+        },
+        {
+            "name": "fulton-market",
+            "short": "Pg 11: 'Local fishermen's boats jostled to get their catch into the <b>Fulton Market</b>'",
+            "long": "Location approximate",
+            "latlon": "40.706231, -74.003368"
+        },
+        {
+            "name": "fulton-steamboat",
+            "short": "Pg 11: 'Robert Fulton launched his first steamboat on the river from the Christopher Street dock in Greenwich Village in 1807'",
+            "long": "Location approximate (current end of Christopher Street)",
+            "latlon": "40.732431, -74.010200"
+        },
+        {
+            "name": "customs-house",
+            "short": "Pg 12: 'The <b>Custom House</b> in New York was the single largest source of income for the goverment of the United States in the antebellum period'",
+            "long": "'From 1842 [to 1862] it was at 26 Wall Street in a new building designed by John Frazee, today designated Federal Hall National Memorial.' - Wikipedia",
+            "wiki": "United_States_Custom_House_(New_York_City)",
+            "latlon": "40.7071254,-74.0101595"
+        },
+        {
+            "name": "marble-palace",
+            "short": "Pg 12: '... the city's first department store, the magnificent '<b>Marble Palace</b>,' on the shilling [east] side at Broadway and Chambers Street",
+            "long": "'It later housed the original New York Sun newspaper (1833-1950) and is now the central offices for the New York City Department of Buildings.' - Wikipedia",
+            "wiki": "280_Broadway",
+            "latlon": "40.7142472,-74.0061507"
+        },
+        {
+            "name": "city-hall",
+            "short": "Pg 14: 'When <b>City Hall</b> opened in 1811 it stood on the city's uptown frontier.'",
+            "long": "'The building is the oldest city hall in the United States that still houses its original governmental functions, such as the office of the Mayor of New York City and the chambers of the New York City Council.' - Wikipedia",
+            "wiki": "New_York_City_Hall",
+            "latlon": "40.7127,-74.0059"
+        },
+        {
+            "name": "five-points",
+            "short": "Pg 14: '... miserable tenements in areas like the infamous <b>Five Points</b>, considered the most dismal and deadly slum in the Western world.'",
+            "long": "Wikipedia",
+            "wiki": "Five_Points,_Manhattan",
+            "latlon": "40.714391,-74.000451"
+        },
+        {
+            "name": "nyyc",
+            "short": "Pg 19: '[Wealthy Southeners] joined the <b>New York Yacht Club</b>...'",
+            "long": "'It was originally located across the Hudson River from Manhattan in Elysian Fields, in Hoboken, NJ... The Hoboken property is now the Stevens Institute of Technology, endowed by the Stevens family.' - <a href='https://nyyc.org/test-news/-/blogs/nyyc-s-first-clubhouse-1845-'>NYYC</a>",
+            "latlon": "40.744701, -74.025386"
+        },
+        {
+            "name": "gracie-mansion",
+            "short": "Pg 20: 'Archibald Gracie, who built <b>Gracie Mansion</b> with cotton profits.'",
+            "long": "'Archibald Gracie Mansion (commonly called Gracie Mansion) is the official residence of the Mayor of the City of New York. Built in 1799, it is located in Carl Schurz Park, at East End Avenue and 88th Street in the Yorkville neighborhood of Manhattan.' - Wikipedia",
+            "wiki": "Gracie_Mansion",
+            "latlon": "40.776108, -73.943333"
+        }
+    ]],
+    ["Chapter 3 - City of Confusion",
+    [
+        {
+            "name": "tappan-building",
+            "short": "Pg 24: '[Arthur Tappan] operated out of an imposing three-floor building of granite on Pearl Street facing the fashionable Hanover Square.'",
+            "long": "'The offices of Arthur and Lewis Tappan were located at 122 Pearl Street. When pro-slavery mobs attacked during the riots of 1834, clerks fought them off with firearms.' - <a href='http://maap.columbia.edu/place/5'>Columbia MAAP</a>",
+            "latlon": "40.704846, -74.008724"
+        },
+        {
+            "name": "clinton-hall",
+            "short": "Pg 25: '... construction of <b>Clinton Hall</b> at Beekman and Nassau Streets; it was a new home for the Mercantile Library'",
+            "long": "The hotel on the west side of the intersection, The Beekman, has a meeting room called Clinton Hall, saying that the Hall 'existed on our site in the mid-19th century'. Read about the library at Wikipedia.",
+            "wiki": "New_York_Mercantile_Library",
+            "latlon": "40.711244, -74.006587"
+        },
+        {
+            "name": "williams-sr",
+            "short": "Pg 26: '... [Peter Williams Jr.'s] father established a small tabacco factory and shop on <b>Liberty Street</b>'",
+            "long": "According to 'Protest and Progress' by John H. Hewitt, this was at 53 Liberty Street. <a href='https://books.google.com/books?id=N7Lc6__mcrIC&d'>Obtained via Google Books</a>.",
+            "latlon": "40.708723, -74.009391"
+        },
+        {
+            "name": "zion-african-methodist",
+            "short": "Pg 26: '[Peter Williams Jr.'s parents were involved in founding] the <b>Zion African Methodist Episcopal Church</b>.",
+            "long": "According to 'Protest and Progress' by John H. Hewitt, this was at 'the corner of Leonard and Church Streets'. <a href='https://books.google.com/books?id=N7Lc6__mcrIC&d'>Obtained via Google Books</a>.",
+            "latlon": "40.717661, -74.005752"
+        },
+        {
+            "name": "episcopalian-free-african",
+            "short": "Pg 26: '[Peter Williams Jr. became] rector of the <b>Episcopalian Free African Church of St. Philip</b>.'",
+            "long": "According to 'Protest and Progress' by John H. Hewitt, this was (at least at one point) as '85 Centre Street, as rebuilt in brick in 1822.' <a href='https://books.google.com/books?id=N7Lc6__mcrIC&d'>Obtained via Google Books</a>.",
+            "latlon": "40.715720, -74.001975"
+        },
+        {
+            "name": "freedoms-journal",
+            "short": "Pg 26: '[Peter Williams Jr.] was also a cofounder, in 1827, of <b>Freedom's Journal</b>, the first black-owned and -run newspaper in the country'",
+            "long": "'This location is 236 Church Street. Another office was located at <b>152</b> Church Street.'- <a href='http://maap.columbia.edu/place/29'>Columbia MAAP</a>. See also Wikipedia.",
+            "wiki": "Freedom%27s_Journal",
+            "latlon": "40.715058, -74.008004"
+        },
+        {
+            "name": "first-colored-presbyterian",
+            "short": "Pg 26: 'Samuel Eli Cornish, founder of the <b>First Colored Presbyterian Church</b>.'",
+            "long": "Approximately on Frankfort Street, based on map <a href='https://www.nyhistory.org/web/africanfreeschool/map/map-print.html'>here</a>.",
+            "latlon": "40.711504, -74.004361"
+        },
+        {
+            "name": "whitehall-dock",
+            "short": "Pg 27: 'Horace Greeley stepped... onto the <b>dock at Whitehall</b>'",
+            "long": "Currently the site of the Staten Island and Governors Island ferry terminals",
+            "latlon": "40.701060, -74.012399"
+        },
+        {
+            "name": "collect-pond",
+            "short": "Pg 29: 'The <b>Collect Pond</b>, once a major source of fresh water'",
+            "long": "Now a park, formerly the site of the city jail known as The Tombs. Wikipedia.",
+            "wiki": "Collect_Pond",
+            "latlon": "40.716197, -74.001649"
+        },
+        {
+            "name": "turtle-bay",
+            "short": "Pg 30: 'Greeley would buy a house on ten woody, gloomy acres in <b>Turtle Bay</b>, now the site of the United Nations complex'",
+            "long": "Location approximate.",
+            "latlon": "40.750133, -73.966694"
+        },
+        {
+            "name": "chatham-gardens",
+            "short": "Pg 35: 'started out as the respectable <b>Chatham Gardens Theatre</b>... [Lewis Tappan converted it into] the <b>Chatham Street Chapel</b>'",
+            "long": "Address from Wikipedia, 150 Park Row, consistent with descriptions. Area has been substantially redeveloped.",
+            "wiki": "Chatham_Garden_Theatre",
+            "latlon": "40.713112, -74.001474"
+        }
+    ]]
+]

@@ -1,0 +1,47 @@
+{
+    "Walt Whitman": {
+        "_comment": "page 3",
+        "home": "Brookyln"  
+    },
+    "Morgan Dix": {
+        "_comment": "page 4",
+        "job": "Rector, Trinity Church",
+        "did": "Account of meeting of business men at start of war",
+        "son-of": "John A. Dix"
+    },
+    "John A. Dix": {
+        "_comment": "page 4",
+        "father-of": "Morgan Dix"
+    },
+    "Robert Livingstone": {
+        "_comment": "page 6",
+        "did": ["Negotiate Louisiana Purchase in 1803", "Backed Fulton steamboats"]
+    },
+    "William Seward": {
+        "_comment": "page 7",
+        "job": "Senator for NY, 1958",
+        "did": "Called battle over slavery 'an irrepressible conflict'"
+    },
+    "William Cullen Bryant": {
+        "_comment": "page 11",
+        "quote": "The City of New York belongs almost as much to the South as to the North"
+    },
+    "Robert Fulton": {
+        "_comment": "page 11",
+        "financed-by": "Robert Livingstone",
+        "did": "Steamships"
+    },
+    "Cornelius Vanderbilt": {
+        "_comment": "page 11",
+        "known-as": "the Commodore",
+        "did": "Steamships"
+    },
+    "Charles Tiffany": {
+        "_comment": "page 12",
+        "did": "Jewel importer from 1837"
+    },
+    "A. T. Stewart": {
+        "_comment": "page 12",
+        "did": "Importer of Irish linens, late 1840s"
+    }
+}

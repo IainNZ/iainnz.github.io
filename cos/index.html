@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130683608-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-130683608-1');
+  </script>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Iain Dunning - Locations from "City of Sedition"</title>
+  <meta name="description" content="Locations from 'City of Sedition'">
+  <meta name="author" content="Iain Dunning">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
+   rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+
+  <!-- Leaflet
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+  crossorigin=""></script>
+</head>
+<body>
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container">
+<div class="row" style="margin-top: 10%">
+  <div class="nine columns">
+    <h1>
+      Locations from "City of Sedition"
+    </h1>
+    <p>
+    <a href="https://www.amazon.com/City-Sedition-History-during-Civil/dp/1455584177">"City of Sedition" by John Strausbaugh</a> is a book about New York before, during, and after the American Cival War. Apart from being a great book in general, one thing I found myself noticing during reading it is all the addresses it mentions. The majority are in downtown Manhattan, a reflection of where the vast majority of the population lived at the time. As a modern-day resident of the area, who recognized many of the addresses but not all, I wanted to map out all the addresses in the book that I could and see what those locations look like today.
+    </p>
+  </div>
+  <div class="three columns">
+    <img src="/cos/images/bookcover.jpg" style="width: 100%">
+  </div>
+</div>  <!-- End row -->
+<div class="row">
+<div class="twelve columns">
+
+<hr>
+  
+<h3><i>Part One</i> - "BEFORE: City of Confusion"</h3>
+<a name="map"></a>
+
+<div style="display: inline-block; position: relative; width: 100%;">
+  <div style="margin-top: 75%"></div>
+  <div id="mapid" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+</div>
+
+<script>
+  var mymap = L.map('mapid').setView([40.7217517,-73.9996356], 14);  // Lt. Petrosino Square
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+      maxZoom: 18,
+  }).addTo(mymap);
+  
+  // Some reference points.
+  L.circle([40.710925, -74.005648], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 25
+  }).addTo(mymap).bindPopup("8 Spruce St, 76 story residential tower by Brooklyn Bridge");
+  L.circle([40.712980, -74.013175], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 25
+  }).addTo(mymap).bindPopup("One World Trader Center, a.k.a. Freedom Tower");
+  L.circle([40.712390, -74.008220], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 25
+  }).addTo(mymap).bindPopup("The Woolworth Building, neo-Gothic skyscraper, tallest in the world from 1913 to 1930");
+  
+  
+</script>
+
+<h4>Chapter 1 - 'My God, We Are Ruined!'</h4>
+<ul>
+  <script>
+    var academy_of_music = L.marker([40.734004,-73.9891415]).addTo(mymap).bindPopup("Pg 3: 'Walt Whitman strolled out of the <b>Academy of Music</b> on 14th Street' <a href='#academy-of-music'>[more]</a>");
+  </script>
+  <li>
+    <a name='academy-of-music'></a>
+    <a href="#map" onclick="academy_of_music.fire('click')">[Map]</a>
+    Pg 3: 'Walt Whitman strolled out of the <b>Academy of Music</b> on 14th Street'
+    <ul>
+      <li>'Located on the northeast corner of East 14th Street and Irving Place' - <a href='https://en.wikipedia.org/wiki/Academy_of_Music_(New_York_City)'>Wikipedia</a></li>
+    </ul>
+  </li>
+  <script>
+    var fulton_st_ferry = L.marker([40.7060121,-74.0024908]).addTo(mymap).bindPopup("Pg 3: '<b>Fulton Street</b> where he would catch his <b>ferry</b> home to Brooklyn' <a href='#fulton-st-ferry'>[more]</a>");
+  </script>
+  <li>
+    <a name='fulton-st-ferry'></a>
+    <a href="#map" onclick="fulton_st_ferry.fire('click')">[Map]</a>
+    Pg 3: '<b>Fulton Street</b> where he would catch his <b>ferry</b> home to Brooklyn'
+    <ul>
+      <li>Now the site of Piers 16 and 17. The primary ferry location in 2018 is Pier 11, between Wall St and Gouverneur Ln.</li>
+    </ul>
+  </li>
+  <script>
+    var trinity_church = L.marker([40.7080544,-74.0124369]).addTo(mymap).bindPopup("Pg 4: 'Morgan Dix, rector of the elite <b>Trinity Church</b>' <a href='#trinity-church'>[more]</a>");
+  </script>
+  <li>
+    <a name='trinity-church'></a>
+    <a href="#map" onclick="trinity_church.fire('click')">[Map]</a>
+    Pg 4: 'Morgan Dix, rector of the elite <b>Trinity Church</b>'
+    <ul>
+      <li>75 Broadway, opposite Wall St</li>
+    </ul>
+  </li>
+</ul>
+<h4>Chapter 2 - City of Slavery</h4>
+<ul>
+  <script>
+    var brooklyn_navy_yard = L.marker([40.704296,-73.974517]).addTo(mymap).bindPopup("Pg 11: 'the muddy <b>Wallabout Bay</b>... became the Brooklyn Navy Yard in 1806' <a href='#brooklyn-navy-yard'>[more]</a>");
+  </script>
+  <li>
+    <a name='brooklyn-navy-yard'></a>
+    <a href="#map" onclick="brooklyn_navy_yard.fire('click')">[Map]</a>
+    Pg 11: 'the muddy <b>Wallabout Bay</b>... became the Brooklyn Navy Yard in 1806'
+    <ul>
+      <li>'The name... comes from the Dutch "Waal bocht", which means "Walloons' Bend", named for its first European settlers: the Walloons, from what is today Wallonia.' - <a href='https://en.wikipedia.org/wiki/Wallabout_Bay'>Wikipedia</a></li>
+    </ul>
+  </li>
+  <script>
+    var fulton_market = L.marker([40.706231, -74.003368]).addTo(mymap).bindPopup("Pg 11: 'Local fishermen's boats jostled to get their catch into the <b>Fulton Market</b>' <a href='#fulton-market'>[more]</a>");
+  </script>
+  <li>
+    <a name='fulton-market'></a>
+    <a href="#map" onclick="fulton_market.fire('click')">[Map]</a>
+    Pg 11: 'Local fishermen's boats jostled to get their catch into the <b>Fulton Market</b>'
+    <ul>
+      <li>Location approximate</li>
+    </ul>
+  </li>
+  <script>
+    var fulton_steamboat = L.marker([40.732431, -74.010200]).addTo(mymap).bindPopup("Pg 11: 'Robert Fulton launched his first steamboat on the river from the Christopher Street dock in Greenwich Village in 1807' <a href='#fulton-steamboat'>[more]</a>");
+  </script>
+  <li>
+    <a name='fulton-steamboat'></a>
+    <a href="#map" onclick="fulton_steamboat.fire('click')">[Map]</a>
+    Pg 11: 'Robert Fulton launched his first steamboat on the river from the Christopher Street dock in Greenwich Village in 1807'
+    <ul>
+      <li>Location approximate (current end of Christopher Street)</li>
+    </ul>
+  </li>
+  <script>
+    var customs_house = L.marker([40.7071254,-74.0101595]).addTo(mymap).bindPopup("Pg 12: 'The <b>Custom House</b> in New York was the single largest source of income for the goverment of the United States in the antebellum period' <a href='#customs-house'>[more]</a>");
+  </script>
+  <li>
+    <a name='customs-house'></a>
+    <a href="#map" onclick="customs_house.fire('click')">[Map]</a>
+    Pg 12: 'The <b>Custom House</b> in New York was the single largest source of income for the goverment of the United States in the antebellum period'
+    <ul>
+      <li>'From 1842 [to 1862] it was at 26 Wall Street in a new building designed by John Frazee, today designated Federal Hall National Memorial.' - <a href='https://en.wikipedia.org/wiki/United_States_Custom_House_(New_York_City)'>Wikipedia</a></li>
+    </ul>
+  </li>
+  <script>
+    var marble_palace = L.marker([40.7142472,-74.0061507]).addTo(mymap).bindPopup("Pg 12: '... the city's first department store, the magnificent '<b>Marble Palace</b>,' on the shilling [east] side at Broadway and Chambers Street <a href='#marble-palace'>[more]</a>");
+  </script>
+  <li>
+    <a name='marble-palace'></a>
+    <a href="#map" onclick="marble_palace.fire('click')">[Map]</a>
+    Pg 12: '... the city's first department store, the magnificent '<b>Marble Palace</b>,' on the shilling [east] side at Broadway and Chambers Street
+    <ul>
+      <li>'It later housed the original New York Sun newspaper (1833-1950) and is now the central offices for the New York City Department of Buildings.' - <a href='https://en.wikipedia.org/wiki/280_Broadway'>Wikipedia</a></li>
+    </ul>
+  </li>
+  <script>
+    var city_hall = L.marker([40.7127,-74.0059]).addTo(mymap).bindPopup("Pg 14: 'When <b>City Hall</b> opened in 1811 it stood on the city's uptown frontier.' <a href='#city-hall'>[more]</a>");
+  </script>
+  <li>
+    <a name='city-hall'></a>
+    <a href="#map" onclick="city_hall.fire('click')">[Map]</a>
+    Pg 14: 'When <b>City Hall</b> opened in 1811 it stood on the city's uptown frontier.'
+    <ul>
+      <li>'The building is the oldest city hall in the United States that still houses its original governmental functions, such as the office of the Mayor of New York City and the chambers of the New York City Council.' - <a href='https://en.wikipedia.org/wiki/New_York_City_Hall'>Wikipedia</a></li>
+    </ul>
+  </li>
+  <script>
+    var five_points = L.marker([40.714391,-74.000451]).addTo(mymap).bindPopup("Pg 14: '... miserable tenements in areas like the infamous <b>Five Points</b>, considered the most dismal and deadly slum in the Western world.' <a href='#five-points'>[more]</a>");
+  </script>
+  <li>
+    <a name='five-points'></a>
+    <a href="#map" onclick="five_points.fire('click')">[Map]</a>
+    Pg 14: '... miserable tenements in areas like the infamous <b>Five Points</b>, considered the most dismal and deadly slum in the Western world.'
+    <ul>
+      <li><a href='https://en.wikipedia.org/wiki/Five_Points,_Manhattan'>Wikipedia</a></li>
+    </ul>
+  </li>
+  <script>
+    var nyyc = L.marker([40.744701, -74.025386]).addTo(mymap).bindPopup("Pg 19: '[Wealthy Southeners] joined the <b>New York Yacht Club</b>...' <a href='#nyyc'>[more]</a>");
+  </script>
+  <li>
+    <a name='nyyc'></a>
+    <a href="#map" onclick="nyyc.fire('click')">[Map]</a>
+    Pg 19: '[Wealthy Southeners] joined the <b>New York Yacht Club</b>...'
+    <ul>
+      <li>'It was originally located across the Hudson River from Manhattan in Elysian Fields, in Hoboken, NJ... The Hoboken property is now the Stevens Institute of Technology, endowed by the Stevens family.' - <a href='https://nyyc.org/test-news/-/blogs/nyyc-s-first-clubhouse-1845-'>NYYC</a></li>
+    </ul>
+  </li>
+  <script>
+    var gracie_mansion = L.marker([40.776108, -73.943333]).addTo(mymap).bindPopup("Pg 20: 'Archibald Gracie, who built <b>Gracie Mansion</b> with cotton profits.' <a href='#gracie-mansion'>[more]</a>");
+  </script>
+  <li>
+    <a name='gracie-mansion'></a>
+    <a href="#map" onclick="gracie_mansion.fire('click')">[Map]</a>
+    Pg 20: 'Archibald Gracie, who built <b>Gracie Mansion</b> with cotton profits.'
+    <ul>
+      <li>'Archibald Gracie Mansion (commonly called Gracie Mansion) is the official residence of the Mayor of the City of New York. Built in 1799, it is located in Carl Schurz Park, at East End Avenue and 88th Street in the Yorkville neighborhood of Manhattan.' - <a href='https://en.wikipedia.org/wiki/Gracie_Mansion'>Wikipedia</a></li>
+    </ul>
+  </li>
+</ul>
+<h4>Chapter 3 - City of Confusion</h4>
+<ul>
+  <script>
+    var tappan_building = L.marker([40.704846, -74.008724]).addTo(mymap).bindPopup("Pg 24: '[Arthur Tappan] operated out of an imposing three-floor building of granite on Pearl Street facing the fashionable Hanover Square.' <a href='#tappan-building'>[more]</a>");
+  </script>
+  <li>
+    <a name='tappan-building'></a>
+    <a href="#map" onclick="tappan_building.fire('click')">[Map]</a>
+    Pg 24: '[Arthur Tappan] operated out of an imposing three-floor building of granite on Pearl Street facing the fashionable Hanover Square.'
+    <ul>
+      <li>'The offices of Arthur and Lewis Tappan were located at 122 Pearl Street. When pro-slavery mobs attacked during the riots of 1834, clerks fought them off with firearms.' - <a href='http://maap.columbia.edu/place/5'>Columbia MAAP</a></li>
+    </ul>
+  </li>
+  <script>
+    var clinton_hall = L.marker([40.711244, -74.006587]).addTo(mymap).bindPopup("Pg 25: '... construction of <b>Clinton Hall</b> at Beekman and Nassau Streets; it was a new home for the Mercantile Library' <a href='#clinton-hall'>[more]</a>");
+  </script>
+  <li>
+    <a name='clinton-hall'></a>
+    <a href="#map" onclick="clinton_hall.fire('click')">[Map]</a>
+    Pg 25: '... construction of <b>Clinton Hall</b> at Beekman and Nassau Streets; it was a new home for the Mercantile Library'
+    <ul>
+      <li>The hotel on the west side of the intersection, The Beekman, has a meeting room called Clinton Hall, saying that the Hall 'existed on our site in the mid-19th century'. Read about the library at <a href='https://en.wikipedia.org/wiki/New_York_Mercantile_Library'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var williams_sr = L.marker([40.708723, -74.009391]).addTo(mymap).bindPopup("Pg 26: '... [Peter Williams Jr.'s] father established a small tabacco factory and shop on <b>Liberty Street</b>' <a href='#williams-sr'>[more]</a>");
+  </script>
+  <li>
+    <a name='williams-sr'></a>
+    <a href="#map" onclick="williams_sr.fire('click')">[Map]</a>
+    Pg 26: '... [Peter Williams Jr.'s] father established a small tabacco factory and shop on <b>Liberty Street</b>'
+    <ul>
+      <li>According to 'Protest and Progress' by John H. Hewitt, this was at 53 Liberty Street. <a href='https://books.google.com/books?id=N7Lc6__mcrIC&d'>Obtained via Google Books</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var zion_african_methodist = L.marker([40.717661, -74.005752]).addTo(mymap).bindPopup("Pg 26: '[Peter Williams Jr.'s parents were involved in founding] the <b>Zion African Methodist Episcopal Church</b>. <a href='#zion-african-methodist'>[more]</a>");
+  </script>
+  <li>
+    <a name='zion-african-methodist'></a>
+    <a href="#map" onclick="zion_african_methodist.fire('click')">[Map]</a>
+    Pg 26: '[Peter Williams Jr.'s parents were involved in founding] the <b>Zion African Methodist Episcopal Church</b>.
+    <ul>
+      <li>According to 'Protest and Progress' by John H. Hewitt, this was at 'the corner of Leonard and Church Streets'. <a href='https://books.google.com/books?id=N7Lc6__mcrIC&d'>Obtained via Google Books</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var episcopalian_free_african = L.marker([40.715720, -74.001975]).addTo(mymap).bindPopup("Pg 26: '[Peter Williams Jr. became] rector of the <b>Episcopalian Free African Church of St. Philip</b>.' <a href='#episcopalian-free-african'>[more]</a>");
+  </script>
+  <li>
+    <a name='episcopalian-free-african'></a>
+    <a href="#map" onclick="episcopalian_free_african.fire('click')">[Map]</a>
+    Pg 26: '[Peter Williams Jr. became] rector of the <b>Episcopalian Free African Church of St. Philip</b>.'
+    <ul>
+      <li>According to 'Protest and Progress' by John H. Hewitt, this was (at least at one point) as '85 Centre Street, as rebuilt in brick in 1822.' <a href='https://books.google.com/books?id=N7Lc6__mcrIC&d'>Obtained via Google Books</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var freedoms_journal = L.marker([40.715058, -74.008004]).addTo(mymap).bindPopup("Pg 26: '[Peter Williams Jr.] was also a cofounder, in 1827, of <b>Freedom's Journal</b>, the first black-owned and -run newspaper in the country' <a href='#freedoms-journal'>[more]</a>");
+  </script>
+  <li>
+    <a name='freedoms-journal'></a>
+    <a href="#map" onclick="freedoms_journal.fire('click')">[Map]</a>
+    Pg 26: '[Peter Williams Jr.] was also a cofounder, in 1827, of <b>Freedom's Journal</b>, the first black-owned and -run newspaper in the country'
+    <ul>
+      <li>'This location is 236 Church Street. Another office was located at <b>152</b> Church Street.'- <a href='http://maap.columbia.edu/place/29'>Columbia MAAP</a>. See also <a href='https://en.wikipedia.org/wiki/Freedom%27s_Journal'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var first_colored_presbyterian = L.marker([40.711504, -74.004361]).addTo(mymap).bindPopup("Pg 26: 'Samuel Eli Cornish, founder of the <b>First Colored Presbyterian Church</b>.' <a href='#first-colored-presbyterian'>[more]</a>");
+  </script>
+  <li>
+    <a name='first-colored-presbyterian'></a>
+    <a href="#map" onclick="first_colored_presbyterian.fire('click')">[Map]</a>
+    Pg 26: 'Samuel Eli Cornish, founder of the <b>First Colored Presbyterian Church</b>.'
+    <ul>
+      <li>Approximately on Frankfort Street, based on map <a href='https://www.nyhistory.org/web/africanfreeschool/map/map-print.html'>here</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var whitehall_dock = L.marker([40.701060, -74.012399]).addTo(mymap).bindPopup("Pg 27: 'Horace Greeley stepped... onto the <b>dock at Whitehall</b>' <a href='#whitehall-dock'>[more]</a>");
+  </script>
+  <li>
+    <a name='whitehall-dock'></a>
+    <a href="#map" onclick="whitehall_dock.fire('click')">[Map]</a>
+    Pg 27: 'Horace Greeley stepped... onto the <b>dock at Whitehall</b>'
+    <ul>
+      <li>Currently the site of the Staten Island and Governors Island ferry terminals</li>
+    </ul>
+  </li>
+  <script>
+    var collect_pond = L.marker([40.716197, -74.001649]).addTo(mymap).bindPopup("Pg 29: 'The <b>Collect Pond</b>, once a major source of fresh water' <a href='#collect-pond'>[more]</a>");
+  </script>
+  <li>
+    <a name='collect-pond'></a>
+    <a href="#map" onclick="collect_pond.fire('click')">[Map]</a>
+    Pg 29: 'The <b>Collect Pond</b>, once a major source of fresh water'
+    <ul>
+      <li>Now a park, formerly the site of the city jail known as The Tombs. <a href='https://en.wikipedia.org/wiki/Collect_Pond'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var turtle_bay = L.marker([40.750133, -73.966694]).addTo(mymap).bindPopup("Pg 30: 'Greeley would buy a house on ten woody, gloomy acres in <b>Turtle Bay</b>, now the site of the United Nations complex' <a href='#turtle-bay'>[more]</a>");
+  </script>
+  <li>
+    <a name='turtle-bay'></a>
+    <a href="#map" onclick="turtle_bay.fire('click')">[Map]</a>
+    Pg 30: 'Greeley would buy a house on ten woody, gloomy acres in <b>Turtle Bay</b>, now the site of the United Nations complex'
+    <ul>
+      <li>Location approximate.</li>
+    </ul>
+  </li>
+  <script>
+    var chatham_gardens = L.marker([40.713112, -74.001474]).addTo(mymap).bindPopup("Pg 36: 'started out as the respectable <b>Chatham Gardens Theatre</b>... [Lewis Tappan converted it into] the <b>Chatham Street Chapel</b>' <a href='#chatham-gardens'>[more]</a>");
+  </script>
+  <li>
+    <a name='chatham-gardens'></a>
+    <a href="#map" onclick="chatham_gardens.fire('click')">[Map]</a>
+    Pg 36: 'started out as the respectable <b>Chatham Gardens Theatre</b>... [Lewis Tappan converted it into] the <b>Chatham Street Chapel</b>'
+    <ul>
+      <li>Address from <a href='https://en.wikipedia.org/wiki/Chatham_Garden_Theatre'>Wikipedia</a>, 150 Park Row, consistent with descriptions. Area has been substantially redeveloped.</li>
+    </ul>
+  </li>
+</ul>
+
+
+<hr>
+                
+</div>  <!-- End twelve columns -->
+</div>  <!-- End row -->
+</div>  <!-- End container -->
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
