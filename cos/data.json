@@ -156,5 +156,76 @@
             "wiki": "Chatham_Garden_Theatre",
             "latlon": "40.713112, -74.001474"
         }
+    ]],
+    ["Chapter 4 - The Great Riot Year",
+    [
+        {
+            "name": "lewis-tappan-house",
+            "short": "Pg 37: '... broke into <b>Lewis [Tappan]'s home</b> on Rose Street'",
+            "long": "Location approximate - the Brooklyn Bridge has radically changed this area.",
+            "latlon": "40.711340, -74.003180"
+        },
+        {
+            "name": "lewis-tappan-house-2",
+            "short": "Pg 38: 'When <b>Arthur [Tappan]</b> moved from Manhattan to Brooklyn Heights'",
+            "long": "From <a href='https://www.brownstoner.com/history/walkabout-brooklyn-and-the-fight-for-freedom-part-one/'>Brownstoner</a>, this is at 86 Pierrepont Street.",
+            "latlon": "40.695275, -73.993939"
+        },
+        {
+            "name": "ruggles-bookshop",
+            "short": "Pg 38: 'On Lispenard Street ... <b>David Ruggles had an abolitionist bookshop</b>'",
+            "long": "'The first black-owned bookshop in the country.' Multiple online secondary sources list this as 67 Lispenard Street.",
+            "latlon": "40.719414, -74.002411"
+        },
+        {
+            "name": "ruggles-store",
+            "short": "Pg 38: '<b>[Ruggles]</b> opened a small corner grocery shop at Broadway and Cortland Street'",
+            "long": "Location approximate.",
+            "latlon": "40.709844, -74.010061"
+        },
+        {
+            "name": "ruggles-home",
+            "short": "Pg 40: '<b>[Ruggles] home</b> at the corner of Lispenard and Church Streets'",
+            "long": "An Underground Railroad location, site of Frederick Douglass's wedding. Multiple online secondary sources list this as 36 Lisepnard Street.",
+            "latlon": "40.719857, -74.003746"
+        },
+        {
+            "name": "tammany-hall",
+            "short": "Pg 41: 'For a few years the New York lodge [of Tammany] met in a hall at Martling's Tavern, on the corner of Nassau and Spruce Streets. This long room came to be known as <b>Tammany Hall</b>'",
+            "long": "'Then, in 1798, the Society moved to more permanent and spacious quarters, the \"Long Room\" of \"Brom\" Martling's Tavern, at Nassau Street and Spruce Street, near where City Hall is today.' - Wikipedia.",
+            "wiki": "Tammany_Hall",
+            "latlon": "40.711681, -74.005852"
+        },
+        {
+            "name": "tammany-hall-2",
+            "short": "Pg 42: 'In 1812, Tammany built its first stand-alone wigwam a short way up Nassau at Frankfort Steet'",
+            "long": "Location approximate - the Brooklyn Bridge has radically changed this area. Wikipedia.",
+            "wiki": "Tammany_Hall",
+            "latlon": "40.711973, -74.005453"
+        }
+    ]],
+    ["Chapter 5 - The War of the Pennies",
+    [
+        {
+            "name": "tribune-first-office",
+            "short": "Pg 50: 'Greely rented a decaying attic at 30 Ann Street for his <b>[New York Tribune] offices</b>.'",
+            "long": "Wikipedia.",
+            "wiki": "New-York_Tribune",
+            "latlon": "40.710639, -74.007670"
+        },
+        {
+            "name": "church-ascension",
+            "short": "Pg 51: 'President Tyler came to New York City and, in a private ceremony at the <b>Church of the Ascension</b> on Fifth Avenue and 10th Street, married Julia Gardiner'",
+            "long": "Wikipedia.",
+            "wiki": "Church_of_the_Ascension,_Episcopal_(Manhattan)",
+            "latlon": "40.733743, -73.995725"
+        },
+        {
+            "name": "nyt-first-office",
+            "short": "Pg 53: '[Henry J. Ramond] put together the first issue [of the New York Times] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street'",
+            "long": "'The newspaper's first building was located at 113 Nassau Street in New York City.' - Wikipedia.",
+            "wiki": "New_York_Times_Building_(41_Park_Row)",
+            "latlon": "40.710972, -74.007164"
+        }
     ]]
 ]
