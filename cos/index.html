@@ -52,7 +52,7 @@
       Locations from "City of Sedition"
     </h1>
     <p>
-    <a href="https://www.amazon.com/City-Sedition-History-during-Civil/dp/1455584177">"City of Sedition" by John Strausbaugh</a> is a book about New York before, during, and after the American Cival War. Apart from being a great book in general, one thing I found myself noticing during reading it is all the addresses it mentions. The majority are in downtown Manhattan, a reflection of where the vast majority of the population lived at the time. As a modern-day resident of the area, who recognized many of the addresses but not all, I wanted to map out all the addresses in the book that I could and see what those locations look like today.
+    <a href="https://www.amazon.com/City-Sedition-History-during-Civil/dp/1455584177">"City of Sedition" by John Strausbaugh</a> is a book about New York before, during, and after the American Civil War. Apart from being a great book in general, one thing I found myself noticing during reading it is all the addresses it mentions. The majority are in downtown Manhattan, a reflection of where the vast majority of the population lived at the time. As a modern-day resident of the area, who recognized many of the addresses but not all, I wanted to map out all the addresses in the book that I could and see what those locations look like today.
     </p>
   </div>
   <div class="three columns">
@@ -134,7 +134,7 @@
     <a href="#map" onclick="trinity_church.fire('click')">[Map]</a>
     Pg 4: 'Morgan Dix, rector of the elite <b>Trinity Church</b>'
     <ul>
-      <li>75 Broadway, opposite Wall St</li>
+      <li>75 Broadway, opposite Wall St.</li>
     </ul>
   </li>
 </ul>
@@ -170,7 +170,7 @@
     <a href="#map" onclick="fulton_steamboat.fire('click')">[Map]</a>
     Pg 11: 'Robert Fulton launched his first steamboat on the river from the Christopher Street dock in Greenwich Village in 1807'
     <ul>
-      <li>Location approximate (current end of Christopher Street)</li>
+      <li>Location approximate (current end of Christopher Street).</li>
     </ul>
   </li>
   <script>
@@ -469,14 +469,83 @@
     </ul>
   </li>
   <script>
-    var nyt_first_office = L.marker([40.710972, -74.007164]).addTo(mymap).bindPopup("Pg 53: '[Henry J. Ramond] put together the first issue [of the New York Times] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street' <a href='#nyt-first-office'>[more]</a>");
+    var nyt_first_office = L.marker([40.710972, -74.007164]).addTo(mymap).bindPopup("Pg 53: '[Henry J. Ramond] put together the first issue [of the <b>New York Times</b>] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street' <a href='#nyt-first-office'>[more]</a>");
   </script>
   <li>
     <a name='nyt-first-office'></a>
     <a href="#map" onclick="nyt_first_office.fire('click')">[Map]</a>
-    Pg 53: '[Henry J. Ramond] put together the first issue [of the New York Times] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street'
+    Pg 53: '[Henry J. Ramond] put together the first issue [of the <b>New York Times</b>] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street'
     <ul>
       <li>'The newspaper's first building was located at 113 Nassau Street in New York City.' - <a href='https://en.wikipedia.org/wiki/New_York_Times_Building_(41_Park_Row)'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+</ul>
+<h4>Chapter 6 - Immigrants and Know-Nothings</h4>
+<ul>
+  <script>
+    var kleindeutschland = L.marker([40.724400, -73.983278]).addTo(mymap).bindPopup("Pg 55: 'while <b>Kleindeutschland</b> (Little Germany) in today's East Village was the third-largest German community in the world after Berlin and Vienna.' <a href='#kleindeutschland'>[more]</a>");
+  </script>
+  <li>
+    <a name='kleindeutschland'></a>
+    <a href="#map" onclick="kleindeutschland.fire('click')">[Map]</a>
+    Pg 55: 'while <b>Kleindeutschland</b> (Little Germany) in today's East Village was the third-largest German community in the world after Berlin and Vienna.'
+    <ul>
+      <li>Location approximately in the historical <a href='https://makingmaps.net/2009/01/27/a-map-of-beerdom-new-york-11th-ward-1885/'>11th Ward</a>. <a href='https://en.wikipedia.org/wiki/Little_Germany,_Manhattan'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var old_st_patricks_cathedral = L.marker([40.723544, -73.995184]).addTo(mymap).bindPopup("Pg 58: '[Bishop John Hughes was consecrated bishop of the New York diocese] in the <b>original St. Patrick's Cathedral</b> between Mott and Mulberrry Streets above Prince Street.' <a href='#old-st-patricks-cathedral'>[more]</a>");
+  </script>
+  <li>
+    <a name='old-st-patricks-cathedral'></a>
+    <a href="#map" onclick="old_st_patricks_cathedral.fire('click')">[Map]</a>
+    Pg 58: '[Bishop John Hughes was consecrated bishop of the New York diocese] in the <b>original St. Patrick's Cathedral</b> between Mott and Mulberrry Streets above Prince Street.'
+    <ul>
+      <li><a href='https://en.wikipedia.org/wiki/St._Patrick%27s_Old_Cathedral'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var new_st_patricks_cathedral = L.marker([40.758486, -73.976035]).addTo(mymap).bindPopup("Pg 59: 'lay the cornerstone for a grand <b>new St. Patrick's Cathedral</b>' <a href='#new-st-patricks-cathedral'>[more]</a>");
+  </script>
+  <li>
+    <a name='new-st-patricks-cathedral'></a>
+    <a href="#map" onclick="new_st_patricks_cathedral.fire('click')">[Map]</a>
+    Pg 59: 'lay the cornerstone for a grand <b>new St. Patrick's Cathedral</b>'
+    <ul>
+      <li><a href='https://en.wikipedia.org/wiki/St._Patrick%27s_Cathedral_(Manhattan)'>Wikipedia</a>.</li>
+    </ul>
+  </li>
+  <script>
+    var charles_daly_hotel = L.marker([40.711413, -74.005278]).addTo(mymap).bindPopup("Pg 61: '[<b>Charles Patrick Daly</b>] was born to Irish Catholic immigrants in 1816, in the Lower East Side hotel his father managed.' <a href='#charles-daly-hotel'>[more]</a>");
+  </script>
+  <li>
+    <a name='charles-daly-hotel'></a>
+    <a href="#map" onclick="charles_daly_hotel.fire('click')">[Map]</a>
+    Pg 61: '[<b>Charles Patrick Daly</b>] was born to Irish Catholic immigrants in 1816, in the Lower East Side hotel his father managed.'
+    <ul>
+      <li>Per 'Fighting Irish in the American Civil War and the Invasion of Mexico: Essays' edited by Arthur H. Mitchell, accessed via Google Books, this 'stood on the east side of Broadway on the site later occupied by the Tribune Tower', which places it at the current site of Pace University.</li>
+    </ul>
+  </li>
+  <script>
+    var charles_daly_8th = L.marker([40.733031, -73.998096]).addTo(mymap).bindPopup("Pg 62: '[<b>Maria Lydig</b>] won his assent, plus a handsome dowry and a nice house on West 8th Street. <a href='#charles-daly-8th'>[more]</a>");
+  </script>
+  <li>
+    <a name='charles-daly-8th'></a>
+    <a href="#map" onclick="charles_daly_8th.fire('click')">[Map]</a>
+    Pg 62: '[<b>Maria Lydig</b>] won his assent, plus a handsome dowry and a nice house on West 8th Street.
+    <ul>
+      <li>Location approximate, may be in 'A Commoner's Judge' by Harold Hammond.</li>
+    </ul>
+  </li>
+  <script>
+    var mcmaster_beating = L.marker([40.726387, -73.986169]).addTo(mymap).bindPopup("Pg 63: 'Meagher found [James] McMaster outside his home on <b>East 6th Street near First Avenue</b> and proceeded to beat him with a riding crop.' <a href='#mcmaster-beating'>[more]</a>");
+  </script>
+  <li>
+    <a name='mcmaster-beating'></a>
+    <a href="#map" onclick="mcmaster_beating.fire('click')">[Map]</a>
+    Pg 63: 'Meagher found [James] McMaster outside his home on <b>East 6th Street near First Avenue</b> and proceeded to beat him with a riding crop.'
+    <ul>
+      <li>Location approximate.</li>
     </ul>
   </li>
 </ul>

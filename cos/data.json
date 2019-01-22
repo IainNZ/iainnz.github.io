@@ -17,7 +17,7 @@
         {
             "name": "trinity-church",
             "short": "Pg 4: 'Morgan Dix, rector of the elite <b>Trinity Church</b>'",
-            "long": "75 Broadway, opposite Wall St",
+            "long": "75 Broadway, opposite Wall St.",
             "latlon": "40.7080544,-74.0124369"
         }
     ]],
@@ -39,7 +39,7 @@
         {
             "name": "fulton-steamboat",
             "short": "Pg 11: 'Robert Fulton launched his first steamboat on the river from the Christopher Street dock in Greenwich Village in 1807'",
-            "long": "Location approximate (current end of Christopher Street)",
+            "long": "Location approximate (current end of Christopher Street).",
             "latlon": "40.732431, -74.010200"
         },
         {
@@ -222,10 +222,53 @@
         },
         {
             "name": "nyt-first-office",
-            "short": "Pg 53: '[Henry J. Ramond] put together the first issue [of the New York Times] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street'",
+            "short": "Pg 53: '[Henry J. Ramond] put together the first issue [of the <b>New York Times</b>] in a 'raw and dismal' loft in an unfinished brownstone on Nassau Street'",
             "long": "'The newspaper's first building was located at 113 Nassau Street in New York City.' - Wikipedia.",
             "wiki": "New_York_Times_Building_(41_Park_Row)",
             "latlon": "40.710972, -74.007164"
         }
-    ]]
+    ]],
+    ["Chapter 6 - Immigrants and Know-Nothings",
+    [
+        {
+            "name": "kleindeutschland",
+            "short": "Pg 55: 'while <b>Kleindeutschland</b> (Little Germany) in today's East Village was the third-largest German community in the world after Berlin and Vienna.'",
+            "long": "Location approximately in the historical <a href='https://makingmaps.net/2009/01/27/a-map-of-beerdom-new-york-11th-ward-1885/'>11th Ward</a>. Wikipedia.",
+            "wiki": "Little_Germany,_Manhattan",
+            "latlon": "40.724400, -73.983278"
+        },
+        {
+            "name": "old-st-patricks-cathedral",
+            "short": "Pg 58: '[Bishop John Hughes was consecrated bishop of the New York diocese] in the <b>original St. Patrick's Cathedral</b> between Mott and Mulberrry Streets above Prince Street.'",
+            "long": "Wikipedia.",
+            "wiki": "St._Patrick%27s_Old_Cathedral",
+            "latlon": "40.723544, -73.995184"
+        },
+        {
+            "name": "new-st-patricks-cathedral",
+            "short": "Pg 59: 'lay the cornerstone for a grand <b>new St. Patrick's Cathedral</b>'",
+            "long": "Wikipedia.",
+            "wiki": "St._Patrick%27s_Cathedral_(Manhattan)",
+            "latlon": "40.758486, -73.976035"
+        },
+        {
+            "name": "charles-daly-hotel",
+            "short": "Pg 61: '[<b>Charles Patrick Daly</b>] was born to Irish Catholic immigrants in 1816, in the Lower East Side hotel his father managed.'",
+            "long": "Per 'Fighting Irish in the American Civil War and the Invasion of Mexico: Essays' edited by Arthur H. Mitchell, accessed via Google Books, this 'stood on the east side of Broadway on the site later occupied by the Tribune Tower', which places it at the current site of Pace University.",
+            "latlon": "40.711413, -74.005278"
+        },
+        {
+            "name": "charles-daly-8th",
+            "short": "Pg 62: '[<b>Maria Lydig</b>] won his assent, plus a handsome dowry and a nice house on West 8th Street.",
+            "long": "Location approximate, may be in 'A Commoner's Judge' by Harold Hammond.",
+            "latlon": "40.733031, -73.998096"
+        },
+        {
+            "name": "mcmaster-beating",
+            "short": "Pg 63: 'Meagher found [James] McMaster outside his home on <b>East 6th Street near First Avenue</b> and proceeded to beat him with a riding crop.'",
+            "long": "Location approximate.",
+            "latlon": "40.726387, -73.986169"
+        }
+    ]
+    ]
 ]
