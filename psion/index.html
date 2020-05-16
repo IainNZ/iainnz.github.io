@@ -1,0 +1,75 @@
+<html>
+<body>
+
+
+<h1>File transfer between Windows 10 and Psion over serial</h1>
+<p>Here is my procedure for doing file transfer from Windows 10.
+The heart of the problem is that PsiWin (version 1, the version that is designed to work with the Psion 3a), is a 16-bit program. That doesn't work anymore on Windows 10. The secondary problem I faced is that my PC doesn't have a serial port, and configuring the USB-to-serial adapter I had wasn't always obvious. Here is my exact setup.</p>
+<h2>Materials and Software</h2>
+<ul>
+<li>Psion Series 3a</li>
+<li>Psion 3Link RS232 serial interface</li>
+<li>StarTech USB to RS232 DB9/DB25 Serial Adapter Cable (Part# ICUSB232DB25) - Prolific chipset <code>PL-2303 HXD</code></li>
+<li>Windows 10</li>
+<li>VirtualBox  (TODO: link)</li>
+<li>Windows 2000 Professional SP4</li>
+</ul>
+<h2>Configuring the USB-to-Serial adapter</h2>
+<ol>
+<li>When first connecting the adapter, Windows will pick the most recent driver it can. This driver caused <code>This device cannot start. (Code 10)</code> errors for me (visible in Device Manager.)</li>
+<li>Looking up the chipset (from Prolific), I was able to find a different driver (installer version 1.20.0, driver version 3.8.25.0) which seemed to work a bit better - I still need to remove and reconnect the adapter to get it to work sometimes. (TODO: link)</li>
+<li>In the device properties, modify the port settings. The following worked - no guarantee its the only option:<ul>
+<li>Bits per second: 9600</li>
+<li>Data bits: 8</li>
+<li>Parity: None</li>
+<li>Stop bits: 1</li>
+<li>Flow control: None</li>
+<li>In the "Advanced" screen, disable "Use FIFO buffers"</li>
+</ul>
+</li>
+</ol>
+<h2>Setting up the virtual machine</h2>
+<ol>
+<li>Install Win2K in VirtualBox (nothing fancy necessary here.)</li>
+<li>Bridge the serial port to the VM. In the VM's settings:<ol>
+<li>Select "Serial Ports"</li>
+<li>My device was on COM4, so for sanity go to <code>Port 4</code> tab</li>
+<li>Check "Enable Serial Port"</li>
+<li>Port Mode: <code>Host Device</code></li>
+<li>Path/Address: <code>COM4</code> or whatever port your adapter is on.</li>
+</ol>
+</li>
+<li>Share a folder with the VM. In the VM's settings:<ol>
+<li>Select "Shared Folders", right-click, "Add Shared Folder"</li>
+<li>Select a folder of your choice on the host.</li>
+<li>Give it a simple name, e.g. <code>shared</code>.</li>
+<li>Check "Auto-mount", Mount point: <code>Z</code>, Check "Make Permanent".</li>
+</ol>
+</li>
+<li>In the VM, configure the serial port:<ol>
+<li>Open Control Panel, System, Hardware tab, Device Manager</li>
+<li>Ports (COM &amp; LPT) - you should see your serial port here.</li>
+<li>Ensure port settings match the hosts.</li>
+</ol>
+</li>
+</ol>
+<h2>Installing the PsiWin software</h2>
+<ol>
+<li>Download it. All versions I could find come as three floppy disks worth. here is one version containing one zip per disk. Extract each floppy into a folder in the shared folder. Then copy everything to the VM's desktop (things won't work well in the shared folder.)<ul>
+<li>TODO(download)</li>
+<li>Note you could download in the VM, but exposing a Win2K VM to the internet is a bad idea.</li>
+</ul>
+</li>
+<li>Run the <code>SETUP.EXE</code> installer. When it wants Disk 2 and 3, just point to the corresponding folders.</li>
+<li>Accept the option to start PsiWin, then...</li>
+<li>Physically connect the Psion. On the System screen, in Special, select <code>Remote Link</code>, <code>On</code> with <code>Baud rate 9600</code>. Hit enter.</li>
+<li>Back in the PsiWin in the VM, select <code>COM4</code>, <code>Baud rate: 9600</code>, OK.<ul>
+<li>For no particular reason, I have had this not work on the first try before. If it fails, check serial port settings and retry.</li>
+</ul>
+</li>
+<li>The first time you do this it may copy files to the Psion. After that, you should see the Psion's drives mounted in PsiWin.</li>
+</ol>
+
+
+</body>
+</html>
