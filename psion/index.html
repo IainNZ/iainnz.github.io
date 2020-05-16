@@ -1,20 +1,47 @@
-<html>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Header numbering -->
+    <style>
+        body {counter-reset: h2}
+        h2 {counter-reset: h3}
+        h2:before {counter-increment: h2; content: counter(h2) ". "}
+        h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) ". "}
+    </style>
+
+    <title>Iain's Psion Series3a Page</title>
+  </head>
+  <body>
+  <div class="container">
 
 
-<h1>File transfer between Windows 10 and Psion over serial</h1>
+<h1>Iain's Psion Series3a Page</h1>
+<p><img alt="Psion with manual" class="img-fluid" src="img/main.jpg" /></p>
+<p>This page is still 
+<img alt="Under construction" src="img/underconstruction.gif" /></p>
+<h2>TODO: Device Overview</h2>
+<h3>TODO: Hardware Overview</h3>
+<h3>TODO: Software overview</h3>
+<h2>File transfer between Windows 10 and Psion over serial link</h2>
 <p>Here is my procedure for doing file transfer from Windows 10.
-The heart of the problem is that PsiWin (version 1, the version that is designed to work with the Psion 3a), is a 16-bit program. That doesn't work anymore on Windows 10. The secondary problem I faced is that my PC doesn't have a serial port, and configuring the USB-to-serial adapter I had wasn't always obvious. Here is my exact setup.</p>
-<h2>Materials and Software</h2>
+The heart of the problem is that PsiWin (version 1, the version that is designed to work with the Psion 3a), is a 16-bit program. That doesn't work anymore on Windows 10. The secondary problem I faced is that my PC doesn't have a serial port, and configuring the USB-to-serial adapter I had wasn't always obvious. Here is my exact setup, that is probably suboptimal in many ways.</p>
+<h3>Materials and Software</h3>
 <ul>
 <li>Psion Series 3a</li>
 <li>Psion 3Link RS232 serial interface</li>
-<li>StarTech USB to RS232 DB9/DB25 Serial Adapter Cable (Part# ICUSB232DB25) - Prolific chipset <code>PL-2303 HXD</code></li>
+<li>StarTech USB to RS232 DB9/DB25 Serial Adapter Cable (Part# <code>ICUSB232DB25</code>) - Prolific chipset <code>PL-2303 HXD</code></li>
 <li>Windows 10</li>
 <li>VirtualBox  (TODO: link)</li>
 <li>Windows 2000 Professional SP4</li>
 </ul>
-<h2>Configuring the USB-to-Serial adapter</h2>
+<h3>Configuring the USB-to-Serial adapter</h3>
 <ol>
 <li>When first connecting the adapter, Windows will pick the most recent driver it can. This driver caused <code>This device cannot start. (Code 10)</code> errors for me (visible in Device Manager.)</li>
 <li>Looking up the chipset (from Prolific), I was able to find a different driver (installer version 1.20.0, driver version 3.8.25.0) which seemed to work a bit better - I still need to remove and reconnect the adapter to get it to work sometimes. (TODO: link)</li>
@@ -28,7 +55,7 @@ The heart of the problem is that PsiWin (version 1, the version that is designed
 </ul>
 </li>
 </ol>
-<h2>Setting up the virtual machine</h2>
+<h3>Setting up the virtual machine</h3>
 <ol>
 <li>Install Win2K in VirtualBox (nothing fancy necessary here.)</li>
 <li>Bridge the serial port to the VM. In the VM's settings:<ol>
@@ -53,7 +80,7 @@ The heart of the problem is that PsiWin (version 1, the version that is designed
 </ol>
 </li>
 </ol>
-<h2>Installing the PsiWin software</h2>
+<h3>Installing the PsiWin software</h3>
 <ol>
 <li>Download it. All versions I could find come as three floppy disks worth. here is one version containing one zip per disk. Extract each floppy into a folder in the shared folder. Then copy everything to the VM's desktop (things won't work well in the shared folder.)<ul>
 <li>TODO(download)</li>
@@ -71,5 +98,6 @@ The heart of the problem is that PsiWin (version 1, the version that is designed
 </ol>
 
 
-</body>
+</div>  <!-- container -->
+  </body>
 </html>
