@@ -3,7 +3,7 @@
 ![Psion with manual](img/main.jpg){: class="img-fluid" }
 
 This page is still 
-![Under construction](img/underconstruction.gif)
+![Under construction](img/underconstruction.gif){: class="img-fluid" }
 
 ## TODO: Device Overview
 
