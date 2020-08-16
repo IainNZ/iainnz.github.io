@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>SI Subway Tunnel</title>
+  
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+    crossorigin=""></script> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""></script>
+    
+  </head>
+  <body>
+    <div style="display: inline-block; position: relative; width: 100%;">
+      <div style="margin-top: 75%"></div>
+      <div id="mapid" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+    </div>
+    <script>
+      var mymap = L.map('mapid').setView([40.655135, -74.047625], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+          maxZoom: 18,
+      }).addTo(mymap);
+
+      // L.tileLayer('https://c.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      //   attribution: 'Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)'
+      // }).addTo(mymap);
+
+      // Bay Ridge subway
+      bayRidgeLine = [
+        [40.641549, -74.017694],  // 59 Street Station
+        [40.636812, -74.022623],  // Corner of 67th St and 4th Ave
+        [40.634951, -74.023389],  // Bay Ridge Av station
+        [40.629757, -74.025504],  // 77 Street station
+        [40.622830, -74.028324],  // 86 Street station
+        [40.616307, -74.031000],  // Bay Ridge - 95 St
+      ]
+      L.polyline(bayRidgeLine, {color: 'black',  weight: 10}).addTo(mymap);
+      L.polyline(bayRidgeLine, {color: 'yellow', weight:  8}).addTo(mymap);
+
+
+      // Baltimore and Ohio Railroad tunnel
+      L.polyline([
+          [40.622692, -74.0733963],  // Foot of Vanderbilt Avenue.
+          [40.6300215,-74.0403786],  // Old glory lookout
+        ],
+        {color: 'red'}).addTo(mymap);
+      L.polyline([
+          [40.622692, -74.0733963],  // Foot of Vanderbilt Avenue.
+          [40.6161847,-74.0399575],  // shore road field house 
+        ],
+        {color: 'red'}).addTo(mymap);
+
+      // STATEN ISLAND COMMITTEE OFFERS PLAN FOR DIRECT ROUTE
+      L.polyline([
+        [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
+        [40.699550, -74.039724],  // Ellis island
+        [40.657382, -74.065371],  // Robbins Reef  [lighthouse]
+        [40.643897, -74.073489],  // under the Kill van Kull to St George...
+        [40.637667, -74.074952],  // ...and Tompkinsville,
+        [40.621369, -74.071454],  // by surface line to Tottenville
+      ], {color: '#0000AA'}).addTo(mymap);
+        
+
+    </script>
+  </body>
+</html>
+
+<!--
+https://en.wikipedia.org/wiki/Staten_Island_Tunnel
+
+FROM TRANSPORTATION ASSET TO BARRIER
+http://www.library.csi.cuny.edu/archives/bridge/barrier.htm
+https://web.archive.org/web/20180613234345/http://www.library.csi.cuny.edu/archives/bridge/barrier.htm
+college_staten_island_barrier.pdf
+
+In 1888, subsequent to building a swing bridge between New Jersey and Staten Island, the Baltimore & Ohio Railroad proposed a tunnel between Staten Island and Brooklyn.
+In 1890, Staten Island developer Erastus Wiman sponsored a plan by the Baltimore and Ohio Railroad to constructa tunnel under the Narrows to connect Staten Island with Brooklyn. The proposal never got through the approval process when financial challenges stopped the plan at the drawing board.
+
+TO TUNNEL THE NARROWS
+ TO TUNNEL THE NARROWS; AND THUS IMPROVE NEW-YORK'S COMMERCIAL FACILITIES.
+MR. ERASTUS WIMAN'S LATEST PLAN UPON WHICH AND HE AND OTHERS HAVE LONG BEEN MEDITATING.
+Aug 5 1890 Nytimes
+https://www.nytimes.com/1890/08/05/archives/to-tunnel-the-narrows-and-thus-improve-newyorks-commercial.html
+
+A spot near Fort Wadsworth, about at the foot of Vanderbilt Avenue, to Bay Ridge.
+    -> 40.622692,-74.0733963
+Length 1 3/4 miles.
+    -> Old glory lookout  40.6300215,-74.0403786
+    -> shore road field house  40.6161847,-74.0399575
+
+
+DUAL CONTRACTS LINES 1912
+
+
+STATEN ISLAND SUBWAY COMMITTEE
+
+
+
+NEED STATEN ISLAND RAILWAY CIRCA 1900s
+-->
