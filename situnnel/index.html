@@ -32,42 +32,142 @@
       //   attribution: 'Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)'
       // }).addTo(mymap);
 
+      // https://en.wikipedia.org/wiki/Staten_Island_Railway#Main_Line_stations
+      var SIR_STGEORGE          = [40.64292356300774, -74.07446134316366];
+      var SIR_TOMPKINSVILLE     = [40.63715374359690, -74.07486223643019];
+      var SIR_STAPLETON         = [40.627889, -74.075169];
+      var SIR_CLIFTON           = [40.62149959120572, -74.07146678902339];
+      var SIR_DONGAN_HILLS      = [40.588590, -74.096034];
+
+      var SIR_STUYVESANT_PLACE  = [40.646458, -74.078417];  // TODO: Confirm
+      var SIR_RICHMOND_TERRACE  = [40.640125, -74.130334];  // TODO: Confirm
+
       // Bay Ridge subway
       bayRidgeLine = [
+        [40.701412408681506, -74.01251181092917],  // Whitehall station (roughly)
+        [40.696417379170505, -74.0002336056721],  // [Montague Tunnel, BK]
+        [40.694383, -73.992593],  // Court Street Station
+        [40.692187, -73.986266],  // Jay St-Metrotech Station
+        [40.689773, -73.981347],  // Dekalb Ave Station
+        [40.687807675056185, -73.97840394264804],  // [Fulton Street curve]
+        [40.68509125181593, -73.97798565146019],  // [crossing Flatbush]
+        [40.684427, -73.978328],  // Atlantic Avenue Barclays Center Station
+        [40.67725681696425, -73.98311882702026],  // Union Street Station
+        [40.67079800852151, -73.98837428040632],  // 9th Street Station
+        [40.665407, -73.992950],  // Prospect Av Station
+        // ... skipping some stations
         [40.641549, -74.017694],  // 59 Street Station
         [40.636812, -74.022623],  // Corner of 67th St and 4th Ave
-        [40.634951, -74.023389],  // Bay Ridge Av station
-        [40.629757, -74.025504],  // 77 Street station
-        [40.622830, -74.028324],  // 86 Street station
-        [40.616307, -74.031000],  // Bay Ridge - 95 St
+        [40.634951, -74.023389],  // Bay Ridge Av Station
+        [40.629757, -74.025504],  // 77 Street Station
+        [40.622830, -74.028324],  // 86 Street Station
+        [40.616307, -74.031000],  // Bay Ridge - 95 St Station
       ]
-      L.polyline(bayRidgeLine, {color: 'black',  weight: 10}).addTo(mymap);
-      L.polyline(bayRidgeLine, {color: 'yellow', weight:  8}).addTo(mymap);
+      L.polyline(bayRidgeLine, {color: 'black',  weight: 7}).addTo(mymap);
+      L.polyline(bayRidgeLine, {color: 'yellow', weight: 5}).addTo(mymap);
+
+      // SIR 
+      var sir1860Line = [
+        SIR_STAPLETON,
+        [40.62553329759571, -74.07447526795153],  // Broad Street curve
+        SIR_CLIFTON,
+        [40.62002031511287, -74.07116611990830],  // Clifton curve
+        [40.61853454693016, -74.07218503434028],  // Clifton curve
+        [40.61695498093826, -74.07454510288402],  // Tompkins Ave bridge
+        [40.60953153786726, -74.07907467082859],  // Fox Hill substation
+        [40.60318736816516, -74.08405131815849],  // Grasmere station
+        [40.59668756015137, -74.08736706901668],  // Old Town station
+        SIR_DONGAN_HILLS,
+      ];
+      L.polyline(sir1860Line, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(sir1860Line, {color: '#0078C6', weight: 5}).addTo(mymap);
+      var sir_Line = [
+        SIR_STGEORGE,
+        [40.63945720987662, -74.07532944153434],  // Bay Street curve
+        SIR_TOMPKINSVILLE,
+        [40.633343716294554, -74.0742895894201],  // Staten Island Siphon curve
+        [40.63098214310685, -74.07527615997854],  // Baltic Street curve
+        SIR_STAPLETON,
+      ];
+      L.polyline(sir_Line, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(sir_Line, {color: '#0078C6', weight: 5}).addTo(mymap);
 
 
       // Baltimore and Ohio Railroad tunnel
-      L.polyline([
-          [40.622692, -74.0733963],  // Foot of Vanderbilt Avenue.
+      var bando_north_line = [
+          [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
           [40.6300215,-74.0403786],  // Old glory lookout
-        ],
-        {color: 'red'}).addTo(mymap);
-      L.polyline([
-          [40.622692, -74.0733963],  // Foot of Vanderbilt Avenue.
+      ];
+      L.polyline(bando_north_line, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(bando_north_line, {color: 'red', weight: 5}).addTo(mymap);
+      var bando_south_line = [
+          [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
           [40.6161847,-74.0399575],  // shore road field house 
-        ],
-        {color: 'red'}).addTo(mymap);
+      ];
+      L.polyline(bando_south_line, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(bando_south_line, {color: 'red', weight: 5}).addTo(mymap);
+
+
+      // (1912) Dual Contracts Route 51
+      var dualconR51 = [
+        [40.63744889468777, -74.02195184905604],  // "Fourth Avenue subway of the BRT"
+        [40.64261289196164, -74.03087512111217],  // "Sixty-sixth Street, Bay Ridge"
+        [40.637856837578276, -74.07370393949604],  // "Arrietta Street" [the section of Victory that runs below Bay Street]
+        SIR_TOMPKINSVILLE,
+        [40.637856837578276, -74.07370393949604],
+        [40.63818650428778, -74.07507647960524],  // [Imagined y connection]
+      ];
+      L.polyline(dualconR51, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(dualconR51, {color: '#99FF99', weight: 5}).addTo(mymap);
+      
+
 
       // STATEN ISLAND COMMITTEE OFFERS PLAN FOR DIRECT ROUTE
-      L.polyline([
+      // Harbor route.
+      var directRoute = [
         [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
         [40.699550, -74.039724],  // Ellis island
         [40.657382, -74.065371],  // Robbins Reef  [lighthouse]
-        [40.643897, -74.073489],  // under the Kill van Kull to St George...
-        [40.637667, -74.074952],  // ...and Tompkinsville,
-        [40.621369, -74.071454],  // by surface line to Tottenville
-      ], {color: '#0000AA'}).addTo(mymap);
+        SIR_STGEORGE,             // under the Kill van Kull to St George...
+        // SIR_TOMPKINSVILLE,        // ...and Tompkinsville, by surface line to Tottenville
+        // SIR_STAPLETON,
+      ];
+      L.polyline(directRoute, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(directRoute, {color: '#9999FF', weight: 5}).addTo(mymap);
+      // NJ coastline route.
+      var njcoastRoute = [
+        [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
+        [40.710250, -74.055819],  // "a point near Communipaw" (Liberty State Park Light Rail Station)
+        [40.69921869113972, -74.07852716493291],  // [Richard St]
+        [40.68685923068572, -74.09415239972346],  // [big highway interchange]
+        [40.661216, -74.116316],  // "Constable Hook" (22nd Street Light Rail Station)
+        // "tunnel under the Kill van Kull...""
+        SIR_RICHMOND_TERRACE,     // "tracks from it to Richmond Terrace"
+        [40.639198228302504, -74.1270949901914],  // [north branch waypoint]
+        [40.64144377686539, -74.11658162118718],  // [north branch waypoint]
+        [40.64503011556617, -74.11038111761222],  // [north branch waypoint]
+        [40.64483480193073, -74.09579455311217],  // [north branch waypoint]
+        [40.64810848462268, -74.08564310561440],  // [north branch waypoint]
+        SIR_STUYVESANT_PLACE,     // "Stuyvesant Place,""
+        SIR_STGEORGE,             // [implicit]
+        // SIR_TOMPKINSVILLE,        // "Tompkinsville"
+        // SIR_STAPLETON,            // "and Tottenville." [via normal SIR]
+      ];
+      L.polyline(njcoastRoute, {color: 'black',   weight: 6}).addTo(mymap);
+      L.polyline(njcoastRoute, {color: '#9999FF', weight: 5}).addTo(mymap);
         
 
+      // mymap.on('click', function(e) {
+      //     alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+      // });
+      mymap.on('click', function(e) {
+        var data = [new ClipboardItem({ "text/plain": new Blob([e.latlng.lat + ", " + e.latlng.lng], { type: "text/plain" }) })];
+        navigator.clipboard.write(data).then(function() {
+          console.log("Copied to clipboard successfully!");
+        }, function() {
+          console.error("Unable to write to clipboard. :-(");
+        });
+      });
     </script>
   </body>
 </html>
@@ -83,25 +183,63 @@ college_staten_island_barrier.pdf
 In 1888, subsequent to building a swing bridge between New Jersey and Staten Island, the Baltimore & Ohio Railroad proposed a tunnel between Staten Island and Brooklyn.
 In 1890, Staten Island developer Erastus Wiman sponsored a plan by the Baltimore and Ohio Railroad to constructa tunnel under the Narrows to connect Staten Island with Brooklyn. The proposal never got through the approval process when financial challenges stopped the plan at the drawing board.
 
-TO TUNNEL THE NARROWS
- TO TUNNEL THE NARROWS; AND THUS IMPROVE NEW-YORK'S COMMERCIAL FACILITIES.
-MR. ERASTUS WIMAN'S LATEST PLAN UPON WHICH AND HE AND OTHERS HAVE LONG BEEN MEDITATING.
-Aug 5 1890 Nytimes
-https://www.nytimes.com/1890/08/05/archives/to-tunnel-the-narrows-and-thus-improve-newyorks-commercial.html
-
-A spot near Fort Wadsworth, about at the foot of Vanderbilt Avenue, to Bay Ridge.
-    -> 40.622692,-74.0733963
-Length 1 3/4 miles.
-    -> Old glory lookout  40.6300215,-74.0403786
-    -> shore road field house  40.6161847,-74.0399575
 
 
-DUAL CONTRACTS LINES 1912
+(1890) BALTIMORE AND OHIO RAILROAD
+
+    TO TUNNEL THE NARROWS; AND THUS IMPROVE NEW-YORK'S COMMERCIAL FACILITIES.
+    MR. ERASTUS WIMAN'S LATEST PLAN UPON WHICH AND HE AND OTHERS HAVE LONG BEEN MEDITATING.
+    Aug 5 1890 Nytimes
+    https://www.nytimes.com/1890/08/05/archives/to-tunnel-the-narrows-and-thus-improve-newyorks-commercial.html
+    https://timesmachine.nytimes.com/timesmachine/1890/08/05/103255981.pdf
+
+    A spot near Fort Wadsworth, about at the foot of Vanderbilt Avenue, to Bay Ridge.
+        -> 40.622692,-74.0733963
+    Length 1 3/4 miles.
+        -> Old glory lookout  40.6300215,-74.0403786
+        -> shore road field house  40.6161847,-74.0399575
+
+============================================================================================================
+
+(1912) DUAL CONTRACTS
+
+    https://en.wikipedia.org/wiki/Dual_Contracts
+    ????
+    
+    https://timesmachine.nytimes.com/timesmachine/1919/02/13/97073465.pdf
+    "board of estimate july 11 of 1912"
+    "route 51"
+    "build a tunnel from sixty-sixth street bay ridge"
+    "to arrieta street tompkinsville"
+
+============================================================================================================
 
 
-STATEN ISLAND SUBWAY COMMITTEE
+(2019) STATEN ISLAND SUBWAY COMMITTEE
+
+    https://timesmachine.nytimes.com/timesmachine/1919/03/25/102856002.pdf
+    
+    The suggested route from the Battery provides for a five-section subway from the west side
+    of Manhattan near its southern extremity to Ellis Island, thence to the Robbins Reef, under
+    the Kill van Jull to St. George and Tompkinsvile, and by surface line to Tottenville.
+
+    Another plan suggested by the committee calls for a tunnel under the North River from Manhattan
+    to a point near Communipaw, thence by elevated along the New Jersey shore to Constable Hook,
+    a tunnel under the Kill van Kull, and tracks from it to Richmond Terrace, Stuyvesant Place,
+    Tompkinsville and Tottenville.
 
 
 
 NEED STATEN ISLAND RAILWAY CIRCA 1900s
+-->
+
+
+
+
+<!--
+https://www.silive.com/northshore/2010/06/neighborhood_still_memorialize.html
+  No longer on the Tompkinsville map are Arietta Street (the section of Victory that runs below Bay Street),
+  Sarah Ann Street (the end of Van Duzer, beyond Hannah), and Griffin Street
+  (the section of Bay between Hannah and Victory) — also named for Tompkins' children.
+
 -->
