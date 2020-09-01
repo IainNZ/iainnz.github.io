@@ -100,6 +100,45 @@
           ).addTo(map).bindPopup(station_name + " (" + SIR_SOUTH_STATIONS[station_name][1] + ")");
       }
 
+      // NORTH SHORE BRANCH (https://en.wikipedia.org/wiki/North_Shore_Branch)
+      var SIR_NORTH_STATIONS = {
+        "NBR": [[40.6469,  -74.0893], "New Brighton (February 23, 1886 -- March 31, 1953)"],  // at the north end of Westervelt Avenue and Richmond Terrace (near Jersey Street)
+        "SSH": [[40.6453,  -74.1017], "Sailors' Snug Harbor (February 23, 1886 -- March 31, 1953)"],  // It is at the northernmost end of the Snug Harbor Cultural Center and Botanical Garden
+        "LVG": [[40.64545, -74.1088], "Livingston (February 23, 1886 -- March 31, 1953)"],  // north of Richmond Terrace at Bard Avenue
+        "WNB": [[40.6415,  -74.1173], "West New Brighton (February 23, 1886 -- March 31, 1953)"],  // north of Richmond Terrace between North Burgher Avenue and Broadway
+        "PTR": [[40.6391,  -74.1311], "Port Richmond (February 23, 1886 -- March 31, 1953)"],  // Located in Port Richmond on a concrete trestle at Park Avenue and Church Street
+        "HBR": [[40.6338,  -74.1601], "Harbor Road (1935/1937? -- March 31, 1953)"],  // under the overpass at the highest point of Harbor Road
+        "ARL": [[40.6335,  -74.1661], "Arlington (1890? -- March 31, 1953)"],  // under the South Avenue overpass, between Arlington Place and Brabant Street
+      };
+      var SIR_NORTH_LINE = [
+        SIR_MAIN_STATIONS["STG"][0],
+        [40.6458889902596, -74.0774811898533],  // Hamilton Avenue
+        [40.6475384847319, -74.0805008962667],  // Nicholas Street
+        [40.6485969038181, -74.0852607208130],  // St Peters
+        [40.6477577731210, -74.0874841492039],  // Westervelt Ave
+        SIR_NORTH_STATIONS["NBR"][0],
+        [40.6449533835709, -74.0959637015412],  // Lafayette Avenue
+        [40.6449213665837, -74.0997105891454],  // Tysen Street
+        SIR_NORTH_STATIONS["SSH"][0],
+        [40.6454938386274, -74.1046177546879],
+        SIR_NORTH_STATIONS["LVG"][0],
+        [40.6445098046694, -74.1116387438568],
+        [40.6415743642890, -74.1165601746248],  // North Burgher
+        SIR_NORTH_STATIONS["WNB"][0],
+        [40.6408023031470, -74.1210683903131],  // North Shore Waterfront Park
+        [40.6394137515201, -74.1254603657952],  // ??
+        SIR_NORTH_STATIONS["PTR"][0],
+        SIR_NORTH_STATIONS["HBR"][0],
+        SIR_NORTH_STATIONS["ARL"][0],
+      ];
+      L.polyline(SIR_NORTH_LINE, {color: 'black',  weight: 4}).addTo(map);
+      L.polyline(SIR_NORTH_LINE, {color: SIR_BLUE_DARK, weight: 3}).addTo(map);
+      for (var key in SIR_NORTH_STATIONS) {
+        L.circle(
+          SIR_NORTH_STATIONS[key][0],
+            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE_DARK}
+          ).addTo(map).bindPopup(SIR_NORTH_STATIONS[key][1]);
+      }
 
       // Bay Ridge 4th Avenue BMT
       var BMT_4TH_STATIONS = {
@@ -187,37 +226,36 @@
 
       // STATEN ISLAND COMMITTEE OFFERS PLAN FOR DIRECT ROUTE
       // Harbor route.
-      var directRoute = [
-        [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
-        [40.699550, -74.039724],  // Ellis island
-        [40.657382, -74.065371],  // Robbins Reef  [lighthouse]
-        SIR_MAIN_STATIONS["STG"][0],             // under the Kill van Kull to St George...
-        // SIR_MAIN_STATIONS["TOM"],        // ...and Tompkinsville, by surface line to Tottenville
-        // SIR_MAIN_STATIONS["STA"],
+      var DIRECT_ELLIS_LINE = [
+        [40.7030805959415, -74.0148668110596],  // "West side of Manhattan near its southern extremity..."
+        [40.6993468378643, -74.0384639580328],  // "... to Ellis island, ..."
+        [40.6974217698410, -74.0422919873131],  // [Ellis Island south]
+        [40.6573747267662, -74.0653520071868],  // "thence to Robbins Reef, ..."  [lighthouse]
+        SIR_MAIN_STATIONS["STG"][0],            // "...under the Kill van Kull to St George and Tompkinsville, by surface line to Tottenville"
       ];
-      L.polyline(directRoute, {color: 'black',   weight: 6}).addTo(map);
-      L.polyline(directRoute, {color: '#7c45a4', weight: 5}).addTo(map);
+      L.polyline(DIRECT_ELLIS_LINE, {color: 'black',   weight: 6}).addTo(map);
+      L.polyline(DIRECT_ELLIS_LINE, {color: '#7c45a4', weight: 5}).addTo(map);
       // NJ coastline route.
-      var njcoastRoute = [
-        [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
-        [40.710250, -74.055819],  // "a point near Communipaw" (Liberty State Park Light Rail Station)
-        [40.69921869113972, -74.07852716493291],  // [Richard St]
-        [40.68685923068572, -74.09415239972346],  // [big highway interchange]
-        [40.661216, -74.116316],  // "Constable Hook" (22nd Street Light Rail Station)
-        // "tunnel under the Kill van Kull...""
-        // SIR_RICHMOND_TERRACE,     // "tracks from it to Richmond Terrace"
-        [40.639198228302504, -74.1270949901914],  // [north branch waypoint]
-        [40.64144377686539, -74.11658162118718],  // [north branch waypoint]
-        [40.64503011556617, -74.11038111761222],  // [north branch waypoint]
-        [40.64483480193073, -74.09579455311217],  // [north branch waypoint]
-        [40.64810848462268, -74.08564310561440],  // [north branch waypoint]
-        // SIR_STUYVESANT_PLACE,     // "Stuyvesant Place,""
-        SIR_MAIN_STATIONS["STG"][0],             // [implicit]
-        // SIR_MAIN_STATIONS["TOM"],        // "Tompkinsville"
-        // SIR_MAIN_STATIONS["STA"],            // "and Tottenville." [via normal SIR]
+      var DIRECT_NJ_LINE = [
+        [40.7030805959415, -74.0148668110596],  // "West side of Manhattan near its southern extremity"
+        [40.7071707039194, -74.0348329412306],  // [Central Railroad of NJ Terminal]
+        [40.7099468010410, -74.0520803669546],  // [Johnston/Arena/Audrey Zapp/Phillip intersection]
+        [40.7102472745650, -74.0550223969820],  // [curve]
+        [40.7098753982395, -74.0564720606952],  // "a point near Communipaw" [Liberty State Park Light Rail Station]
+        [40.6992388843320, -74.0784845968185],  // [Richard St]
+        [40.6868444466846, -74.0941803987763],  // [big highway interchange]
+        [40.6787720324845, -74.1017249900245],  // [45th Street Light Rail Station]
+        [40.6610748456792, -74.1166250298059],  // "Constable Hook" [22nd Street Light Rail Station]
+        [40.6516037080157, -74.1200788234671],  // [East 5th Street]
+        [40.6461587931103, -74.1202298608254],  // [Ingham Avenue]
+        [40.6411861447098, -74.1199264451925],  // "tunnel under the Kill van Kull and tracks running from it to Richmond Terrace..."
+        [40.6408033640147, -74.1191058500002],  // [curve]
+        [40.6408685388164, -74.1177011669869],  // [curve]
+        [40.6415708775152, -74.1165610295056],  // [curve]
+
       ];
-      L.polyline(njcoastRoute, {color: 'black',   weight: 6}).addTo(map);
-      L.polyline(njcoastRoute, {color: '#7c45a4', weight: 5}).addTo(map);
+      L.polyline(DIRECT_NJ_LINE, {color: 'black',   weight: 6}).addTo(map);
+      L.polyline(DIRECT_NJ_LINE, {color: '#7c45a4', weight: 5}).addTo(map);
 
       // Render current SIR last.
       L.polyline(SIR_MAIN_LINE, {color: 'black',  weight: 6}).addTo(map);
