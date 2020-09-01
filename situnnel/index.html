@@ -22,28 +22,94 @@
       <div id="mapid" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
     </div>
     <script>
-      var mymap = L.map('mapid').setView([40.655135, -74.047625], 13);
+      'use strict';
+
+      var map = L.map('mapid').setView([40.655135, -74.047625], 13);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
           maxZoom: 18,
-      }).addTo(mymap);
+      }).addTo(map);
 
-      // L.tileLayer('https://c.tile.opentopomap.org/{z}/{x}/{y}.png', {
-      //   attribution: 'Kartendaten: © OpenStreetMap-Mitwirkende, SRTM | Kartendarstellung: © OpenTopoMap (CC-BY-SA)'
-      // }).addTo(mymap);
+      // https://en.wikipedia.org/wiki/Staten_Island_Railway
+      var SIR_BLUE = '#0078C6';
+      var SIR_BLUE_DARK = '#003D66';  // 39%->20% https://www.w3schools.com/colors/colors_picker.asp
+      // MAIN BRANCH.
+      var SIR_MAIN_STATIONS = {
+        "STG": [[40.6430007812499, -74.0744481020592], "St. George Terminal (March 7, 1886 -- )"],
+        "TOM": [[40.6371513867253, -74.0748827435837], "Tompkinsville (July 31, 1884 -- )"],
+        "STA": [[40.6279531260000, -74.0751670814817], "Stapleton (July 31, 1884 -- )"],
+        "CLI": [[40.6215000653134, -74.0714923696584], "Clifton (April 23, 1860 -- )"],
+        "GRA": [[40.6031183056500, -74.0840607126536], "Grasmere (1886 -- "],
+      };
+      var SIR_MAIN_LINE = [
+        SIR_MAIN_STATIONS["STG"][0],
+        [40.6389974912652, -74.0753595686456],  // Bay Street corner
+        SIR_MAIN_STATIONS["TOM"][0],
+        [40.6332299178238, -74.0743294621114],  // Staten Island Siphon corner
+        [40.6309285929442, -74.0752633594733],  // Baltic Street corner
+        SIR_MAIN_STATIONS["STA"][0],
+        [40.6255118501751, -74.0745011350111],  // Broad Street corner
+        SIR_MAIN_STATIONS["CLI"][0],
+        [40.6203814733097, -74.0711275625871],  // Clifton curve
+        [40.6193710876916, -74.0714762965699],  // Clifton curve
+        [40.6185540273574, -74.0721729232036],  // Clifton curve
+        [40.6169569155168, -74.0745550445637],  // Tompkins Ave bridge
+        [40.6092913157698, -74.0792543323713],  // Fox Hill substation
+        SIR_MAIN_STATIONS["GRA"][0],
+      ];
 
-      // https://en.wikipedia.org/wiki/Staten_Island_Railway#Main_Line_stations
-      var SIR_STGEORGE          = [40.64292356300774, -74.07446134316366];
-      var SIR_TOMPKINSVILLE     = [40.63715374359690, -74.07486223643019];
-      var SIR_STAPLETON         = [40.627889, -74.075169];
-      var SIR_CLIFTON           = [40.62149959120572, -74.07146678902339];
-      var SIR_DONGAN_HILLS      = [40.588590, -74.096034];
+      // SOUTH BEACH BRANCH (https://en.wikipedia.org/wiki/South_Beach_Branch)
+      var SIR_SOUTHBEACH_START    = [40.6190788617981, -74.0717232860908];  // [40.618889, -74.071667];
+      var SIR_ROSEBANK            = [40.614639, -74.070278];  // Tilson Place between Virginia Avenue and St. Mary's Avenue.
+      var SIR_BELAIR_ROAD         = [40.610278, -74.067222];  // Vermont Avenue, between Belair Road & St. Johns Avenue.
+      var SIR_FORT_WADSWORTH      = [40.606972, -74.066472];
+      var SIR_ARROWCHAR           = [40.599722, -74.066528];  // Major Avenue.
+      var SIR_CEDAR_AVENUE        = [40.5966266919705, -74.0655381083032];  // [40.596583, -74.065639];
+      var SIR_SOUTH_BEACH         = [40.590972, -74.067639];
+      var SIR_WENTWORTH_AVENUE    = [40.589028, -74.069861];  // Oceanside Avenue and Wentworth Avenue.
+      var SIR_SOUTH_STATIONS = {
+        "Rosebank":         [SIR_ROSEBANK,          "January 1, 1888 -- March 31, 1953"],
+        "Belair Road":      [SIR_BELAIR_ROAD,       "January 1, 1888 -- March 31, 1953"],
+        "Fort Wadsworth":   [SIR_FORT_WADSWORTH,    "January 1, 1888 -- March 31, 1953"],
+        "Arrowchar":        [SIR_ARROWCHAR,         "January 1, 1888 -- March 31, 1953"],
+        "Cedar Avenue":     [SIR_CEDAR_AVENUE,      "1934 -- March 31, 1953"],
+        "South Beach":      [SIR_SOUTH_BEACH,       "1889 -- March 31, 1953"],
+        "Wentworth Avenue": [SIR_WENTWORTH_AVENUE,  "1925 -- March 31, 1953"],
+      };
+      var SIR_SOUTH_LINE = [
+        SIR_SOUTHBEACH_START,
+        [40.6180289318403, -74.0718841800059],  // Langere and Willow
+        [40.6170183167189, -74.0717930180374],  // Langere and Lynhurst
+        SIR_ROSEBANK,
+        SIR_BELAIR_ROAD,
+        SIR_FORT_WADSWORTH,
+        SIR_ARROWCHAR,
+        SIR_CEDAR_AVENUE,
+        [40.5952892640562, -74.0655649726447],  // Jackson Avenue and Railroad Avenue.
+        [40.5930651260183, -74.0659190651822],  // Ragazzi Lane
+        [40.5918764894678, -74.0665841666530],  // Sunnymeade
+        SIR_SOUTH_BEACH,
+        SIR_WENTWORTH_AVENUE,
+      ];
+      L.polyline(SIR_SOUTH_LINE, {color: 'black',  weight: 4}).addTo(map);
+      L.polyline(SIR_SOUTH_LINE, {color: SIR_BLUE_DARK, weight: 3}).addTo(map).bindPopup("S.I.R. South Beach Branch (closed 1953)");
+      for (var station_name in SIR_SOUTH_STATIONS) {
+        L.circle(
+          SIR_SOUTH_STATIONS[station_name][0],
+            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE_DARK}
+          ).addTo(map).bindPopup(station_name + " (" + SIR_SOUTH_STATIONS[station_name][1] + ")");
+      }
 
-      var SIR_STUYVESANT_PLACE  = [40.646458, -74.078417];  // TODO: Confirm
-      var SIR_RICHMOND_TERRACE  = [40.640125, -74.130334];  // TODO: Confirm
 
-      // Bay Ridge subway
-      bayRidgeLine = [
+      // Bay Ridge 4th Avenue BMT
+      var BMT_4TH_STATIONS = {
+        "59":             [[40.6413601873808, -74.0178487614985], "59th Street"],
+        "BRAve":          [[40.6347678186816, -74.0234382651507], "Bay Ridge Avenue"],
+        "77":             [[40.6295594278543, -74.0255356700721], "77th Street"],
+        "86":             [[40.6228054375383, -74.0283038488705], "86th Street"],
+        "95":             [[40.6161874144205, -74.0310235406360], "95th Street"],
+      };
+      var BMT_4TH_LINE = [
         [40.701412408681506, -74.01251181092917],  // Whitehall station (roughly)
         [40.696417379170505, -74.0002336056721],  // [Montague Tunnel, BK]
         [40.694383, -73.992593],  // Court Street Station
@@ -56,41 +122,21 @@
         [40.67079800852151, -73.98837428040632],  // 9th Street Station
         [40.665407, -73.992950],  // Prospect Av Station
         // ... skipping some stations
-        [40.641549, -74.017694],  // 59 Street Station
-        [40.636812, -74.022623],  // Corner of 67th St and 4th Ave
-        [40.634951, -74.023389],  // Bay Ridge Av Station
-        [40.629757, -74.025504],  // 77 Street Station
-        [40.622830, -74.028324],  // 86 Street Station
-        [40.616307, -74.031000],  // Bay Ridge - 95 St Station
+        BMT_4TH_STATIONS["59"][0],  // 59 Street Station
+        [40.6368160424701, -74.0226175414859],  // Corner of 67th St and 4th Ave
+        BMT_4TH_STATIONS["BRAve"][0],
+        BMT_4TH_STATIONS["77"][0],
+        BMT_4TH_STATIONS["86"][0],
+        BMT_4TH_STATIONS["95"][0],
       ]
-      L.polyline(bayRidgeLine, {color: 'black',  weight: 7}).addTo(mymap);
-      L.polyline(bayRidgeLine, {color: 'yellow', weight: 5}).addTo(mymap);
-
-      // SIR 
-      var sir1860Line = [
-        SIR_STAPLETON,
-        [40.62553329759571, -74.07447526795153],  // Broad Street curve
-        SIR_CLIFTON,
-        [40.62002031511287, -74.07116611990830],  // Clifton curve
-        [40.61853454693016, -74.07218503434028],  // Clifton curve
-        [40.61695498093826, -74.07454510288402],  // Tompkins Ave bridge
-        [40.60953153786726, -74.07907467082859],  // Fox Hill substation
-        [40.60318736816516, -74.08405131815849],  // Grasmere station
-        [40.59668756015137, -74.08736706901668],  // Old Town station
-        SIR_DONGAN_HILLS,
-      ];
-      L.polyline(sir1860Line, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(sir1860Line, {color: '#0078C6', weight: 5}).addTo(mymap);
-      var sir_Line = [
-        SIR_STGEORGE,
-        [40.63945720987662, -74.07532944153434],  // Bay Street curve
-        SIR_TOMPKINSVILLE,
-        [40.633343716294554, -74.0742895894201],  // Staten Island Siphon curve
-        [40.63098214310685, -74.07527615997854],  // Baltic Street curve
-        SIR_STAPLETON,
-      ];
-      L.polyline(sir_Line, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(sir_Line, {color: '#0078C6', weight: 5}).addTo(mymap);
+      L.polyline(BMT_4TH_LINE, {color: 'black',  weight: 6}).addTo(map);
+      L.polyline(BMT_4TH_LINE, {color: 'yellow', weight: 5}).addTo(map);
+      for (var key in BMT_4TH_STATIONS) {
+        L.circle(
+          BMT_4TH_STATIONS[key][0],
+            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: 'yellow'}
+          ).addTo(map).bindPopup(BMT_4TH_STATIONS[key][1]);
+      }
 
 
       // Baltimore and Ohio Railroad tunnel
@@ -102,39 +148,40 @@
           [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
           [40.6161847,-74.0399575],  // shore road field house 
       ];
-      L.polyline(bando_north_line, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(bando_south_line, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(bando_north_line, {color: 'red', weight: 5}).addTo(mymap);
-      L.polyline(bando_south_line, {color: 'red', weight: 5}).addTo(mymap);
+      L.polyline(bando_north_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+      L.polyline(bando_south_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+      L.polyline(bando_north_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+      L.polyline(bando_south_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
 
 
       // (1912) Dual Contracts Route 51
       // https://babel.hathitrust.org/cgi/pt?id=coo.31924106194131&view=1up&seq=155&q1=staten
       // TODO: Clean up SI end
       var dualconR51 = [
-        [40.63802365228185, -74.02134706729147],  // "south side of 65th street"
-        [40.637653705905386, -74.02357358471566],  // "block bounded by fourth avenue, third avenue, 66th street and 67th street"
-        [40.637792068007194, -74.02509123094856],  // "under 67th street at or near the centre line of Third avenue"
-        [40.6396355121768, -74.03031987079694],  // "to colonial road"
-        [40.64024591293468, -74.03571475457893], // "across Shore road to a point under water-front property about midway between 67th street produced and 68th street"
-        [40.63887820562333, -74.07356995904277],  // "north of arrieta street and east of stuyvesant place"
-        // Northwesterly
-        [40.641349423016734, -74.07589747674332],  //????  to a point in Stuyvesant place at or near Weiner place
-        SIR_STGEORGE,
+        [40.6380428590818, -74.0213353539724],  // "south side of 65th street"
+        [40.6376397419235, -74.0235722282747],  // "block bounded by fourth avenue, third avenue, 66th street and 67th street"
+        [40.6377985459431, -74.0251010272583],  // "under 67th street at or near the centre line of Third avenue"
+        [40.6387999037443, -74.0276171161908],  // [2nd and 67th]
+        [40.6396385684067, -74.0303099504064],  // "to colonial road"
+        [40.6402696914570, -74.0357385278499], // "across Shore road to a point under water-front property about midway between 67th street produced and 68th street"
+        [40.6388854431669, -74.0736007403748],  // "north of arrieta street and east of stuyvesant place"
+        // Northwesterly branch
+        [40.6392360577766, -74.0748561438280],  //????
+        [40.6404486561136, -74.0757143934755],  //????
+        [40.6413770044288, -74.0758806838913],  //????  to a point in Stuyvesant place at or near Weiner place
+        SIR_MAIN_STATIONS["STG"][0],
       ];
       var dualconR51south = [
-        [40.63887820562333, -74.07356995904277],  // "north of arrieta street and east of stuyvesant place"
-        [40.637767552951914, -74.07595666152243],  // "under... south shore branch... to a point in arrietta street at or near its intersection with Syu. place and Central avenue"
-        [40.636704901014866, -74.07565650555522],   // ???? griffin street near Minthorn[e] street"
-        [40.633343716294554, -74.0742895894201],  // Staten Island Siphon curve
-        // SIR_TOMPKINSVILLE,
-        // [40.637856837578276, -74.07370393949604],
-        // [40.63818650428778, -74.07507647960524],  // [Imagined y connection]
+        [40.6388854431669, -74.0736007403748],  // "north of arrieta street and east of stuyvesant place"
+        [40.6384555940411, -74.0754247569421],  // ???
+        [40.6377535346203, -74.0760308721880],  // "under... south shore branch... to a point in arrietta street at or near its intersection with Syu. place and Central avenue"
+        [40.6359228534196, -74.0758324366710],  // ???
+        [40.6347501049599, -74.0745664838285],  // ???
       ];
-      L.polyline(dualconR51, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(dualconR51south, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(dualconR51, {color: '#99FF99', weight: 5}).addTo(mymap);
-      L.polyline(dualconR51south, {color: '#99FF99', weight: 5}).addTo(mymap);
+      L.polyline(dualconR51, {color: 'black',   weight: 6}).addTo(map);
+      L.polyline(dualconR51south, {color: 'black',   weight: 6}).addTo(map);
+      L.polyline(dualconR51, {color: '#99FF99', weight: 5}).addTo(map);
+      L.polyline(dualconR51south, {color: '#99FF99', weight: 5}).addTo(map);
       
 
 
@@ -144,12 +191,12 @@
         [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
         [40.699550, -74.039724],  // Ellis island
         [40.657382, -74.065371],  // Robbins Reef  [lighthouse]
-        SIR_STGEORGE,             // under the Kill van Kull to St George...
-        // SIR_TOMPKINSVILLE,        // ...and Tompkinsville, by surface line to Tottenville
-        // SIR_STAPLETON,
+        SIR_MAIN_STATIONS["STG"][0],             // under the Kill van Kull to St George...
+        // SIR_MAIN_STATIONS["TOM"],        // ...and Tompkinsville, by surface line to Tottenville
+        // SIR_MAIN_STATIONS["STA"],
       ];
-      L.polyline(directRoute, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(directRoute, {color: '#5555FF', weight: 5}).addTo(mymap);
+      L.polyline(directRoute, {color: 'black',   weight: 6}).addTo(map);
+      L.polyline(directRoute, {color: '#7c45a4', weight: 5}).addTo(map);
       // NJ coastline route.
       var njcoastRoute = [
         [40.703070, -74.014807],  // West side of Manhattan near its southern extremity
@@ -158,26 +205,32 @@
         [40.68685923068572, -74.09415239972346],  // [big highway interchange]
         [40.661216, -74.116316],  // "Constable Hook" (22nd Street Light Rail Station)
         // "tunnel under the Kill van Kull...""
-        SIR_RICHMOND_TERRACE,     // "tracks from it to Richmond Terrace"
+        // SIR_RICHMOND_TERRACE,     // "tracks from it to Richmond Terrace"
         [40.639198228302504, -74.1270949901914],  // [north branch waypoint]
         [40.64144377686539, -74.11658162118718],  // [north branch waypoint]
         [40.64503011556617, -74.11038111761222],  // [north branch waypoint]
         [40.64483480193073, -74.09579455311217],  // [north branch waypoint]
         [40.64810848462268, -74.08564310561440],  // [north branch waypoint]
-        SIR_STUYVESANT_PLACE,     // "Stuyvesant Place,""
-        SIR_STGEORGE,             // [implicit]
-        // SIR_TOMPKINSVILLE,        // "Tompkinsville"
-        // SIR_STAPLETON,            // "and Tottenville." [via normal SIR]
+        // SIR_STUYVESANT_PLACE,     // "Stuyvesant Place,""
+        SIR_MAIN_STATIONS["STG"][0],             // [implicit]
+        // SIR_MAIN_STATIONS["TOM"],        // "Tompkinsville"
+        // SIR_MAIN_STATIONS["STA"],            // "and Tottenville." [via normal SIR]
       ];
-      L.polyline(njcoastRoute, {color: 'black',   weight: 6}).addTo(mymap);
-      L.polyline(njcoastRoute, {color: '#5555FF', weight: 5}).addTo(mymap);
-        
+      L.polyline(njcoastRoute, {color: 'black',   weight: 6}).addTo(map);
+      L.polyline(njcoastRoute, {color: '#7c45a4', weight: 5}).addTo(map);
 
-      // mymap.on('click', function(e) {
-      //     alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-      // });
-      mymap.on('click', function(e) {
-        var data = [new ClipboardItem({ "text/plain": new Blob([e.latlng.lat + ", " + e.latlng.lng], { type: "text/plain" }) })];
+      // Render current SIR last.
+      L.polyline(SIR_MAIN_LINE, {color: 'black',  weight: 6}).addTo(map);
+      L.polyline(SIR_MAIN_LINE, {color: SIR_BLUE, weight: 5}).addTo(map);
+      for (var key in SIR_MAIN_STATIONS) {
+        L.circle(
+            SIR_MAIN_STATIONS[key][0],
+            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE}
+          ).addTo(map).bindPopup(SIR_MAIN_STATIONS[key][1]);
+      }
+        
+      map.on('click', function(e) {
+        var data = [new ClipboardItem({ "text/plain": new Blob([e.latlng.lat.toFixed(13) + ", " + e.latlng.lng.toFixed(13)], { type: "text/plain" }) })];
         navigator.clipboard.write(data).then(function() {
           console.log("Copied to clipboard successfully!");
         }, function() {
