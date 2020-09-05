@@ -1,282 +1,461 @@
-<html>
-  <head>
-    <title>SI Subway Tunnel</title>
-  
-    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-    integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-    crossorigin=""></script> -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""></script>
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Maps and information about proposed tunnels to Staten Island, N.Y.">
+
+  <title>Iain Dunning - Staten Island Subway Tunnels</title>
+
+  <style>
+    /*
+    Fonts from the "ET Book":
+      https://github.com/edwardtufte/et-book/blob/gh-pages/et-book.css
+    Additional styling drawn from:
+      https://edwardtufte.github.io/tufte-css/tufte.css
+    */
+    @charset "UTF-8";
+
+    @font-face {
+      font-family: "et-book";
+      src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");
+      src: url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"), url("et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");
+      font-weight: normal;
+      font-style: normal
+    }
+
+    @font-face {
+      font-family: "et-book";
+      src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");
+      src: url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf") format("truetype"), url("et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf") format("svg");
+      font-weight: normal;
+      font-style: italic
+    }
+
+    @font-face {
+      font-family: "et-book";
+      src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");
+      src: url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"), url("et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");
+      font-weight: bold;
+      font-style: normal
+    }
+
+    html {
+      font-size: 15px;
+    }
+
+    body {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      /* See above re-fonts. */
+      /* font-family: "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      background: #fffff8;
+      color: #112;
+    }
+
+    h1 {
+      font-weight: 400;
+      margin-top: 4rem;
+      margin-bottom: 1.5rem;
+      font-size: 3.2rem;
+      line-height: 1;
+    }
     
-  </head>
-  <body>
-    <div style="display: inline-block; position: relative; width: 100%;">
-      <div style="margin-top: 75%"></div>
-      <div id="mapid" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
-    </div>
-    <script>
-      'use strict';
+    h2 {
+        /* font-style: italic; */
+        font-weight: 400;
+        margin-top: 2.1rem;
+        margin-bottom: 1.4rem;
+        font-size: 2.2rem;
+        line-height: 1;
+    }
+    
+    h3 {
+        /* font-style: italic; */
+        font-weight: 400;
+        font-size: 1.7rem;
+        margin-top: 2rem;
+        margin-bottom: 1.4rem;
+        line-height: 1;
+    }
 
-      var map = L.map('mapid').setView([40.655135, -74.047625], 13);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-          maxZoom: 18,
-      }).addTo(map);
+    p,
+    dl,
+    ol,
+    ul {
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
 
-      // https://en.wikipedia.org/wiki/Staten_Island_Railway
-      var SIR_BLUE = '#0078C6';
-      var SIR_BLUE_DARK = '#003D66';  // 39%->20% https://www.w3schools.com/colors/colors_picker.asp
-      // MAIN BRANCH.
-      var SIR_MAIN_STATIONS = {
-        "STG": [[40.6430007812499, -74.0744481020592], "St. George Terminal (March 7, 1886 -- )"],
-        "TOM": [[40.6371513867253, -74.0748827435837], "Tompkinsville (July 31, 1884 -- )"],
-        "STA": [[40.6279531260000, -74.0751670814817], "Stapleton (July 31, 1884 -- )"],
-        "CLI": [[40.6215000653134, -74.0714923696584], "Clifton (April 23, 1860 -- )"],
-        "GRA": [[40.6031183056500, -74.0840607126536], "Grasmere (1886 -- "],
-      };
-      var SIR_MAIN_LINE = [
-        SIR_MAIN_STATIONS["STG"][0],
-        [40.6389974912652, -74.0753595686456],  // Bay Street corner
-        SIR_MAIN_STATIONS["TOM"][0],
-        [40.6332299178238, -74.0743294621114],  // Staten Island Siphon corner
-        [40.6309285929442, -74.0752633594733],  // Baltic Street corner
-        SIR_MAIN_STATIONS["STA"][0],
-        [40.6255118501751, -74.0745011350111],  // Broad Street corner
-        SIR_MAIN_STATIONS["CLI"][0],
-        [40.6203814733097, -74.0711275625871],  // Clifton curve
-        [40.6193710876916, -74.0714762965699],  // Clifton curve
-        [40.6185540273574, -74.0721729232036],  // Clifton curve
-        [40.6169569155168, -74.0745550445637],  // Tompkins Ave bridge
-        [40.6092913157698, -74.0792543323713],  // Fox Hill substation
-        SIR_MAIN_STATIONS["GRA"][0],
-      ];
+    p {
+      margin-top: 1.4rem;
+      margin-bottom: 1.4rem;
+      padding-right: 0;
+      vertical-align: baseline;
+    }
 
-      // SOUTH BEACH BRANCH (https://en.wikipedia.org/wiki/South_Beach_Branch)
-      var SIR_SOUTHBEACH_START    = [40.6190788617981, -74.0717232860908];  // [40.618889, -74.071667];
-      var SIR_ROSEBANK            = [40.614639, -74.070278];  // Tilson Place between Virginia Avenue and St. Mary's Avenue.
-      var SIR_BELAIR_ROAD         = [40.610278, -74.067222];  // Vermont Avenue, between Belair Road & St. Johns Avenue.
-      var SIR_FORT_WADSWORTH      = [40.606972, -74.066472];
-      var SIR_ARROWCHAR           = [40.599722, -74.066528];  // Major Avenue.
-      var SIR_CEDAR_AVENUE        = [40.5966266919705, -74.0655381083032];  // [40.596583, -74.065639];
-      var SIR_SOUTH_BEACH         = [40.590972, -74.067639];
-      var SIR_WENTWORTH_AVENUE    = [40.589028, -74.069861];  // Oceanside Avenue and Wentworth Avenue.
-      var SIR_SOUTH_STATIONS = {
-        "Rosebank":         [SIR_ROSEBANK,          "January 1, 1888 -- March 31, 1953"],
-        "Belair Road":      [SIR_BELAIR_ROAD,       "January 1, 1888 -- March 31, 1953"],
-        "Fort Wadsworth":   [SIR_FORT_WADSWORTH,    "January 1, 1888 -- March 31, 1953"],
-        "Arrowchar":        [SIR_ARROWCHAR,         "January 1, 1888 -- March 31, 1953"],
-        "Cedar Avenue":     [SIR_CEDAR_AVENUE,      "1934 -- March 31, 1953"],
-        "South Beach":      [SIR_SOUTH_BEACH,       "1889 -- March 31, 1953"],
-        "Wentworth Avenue": [SIR_WENTWORTH_AVENUE,  "1925 -- March 31, 1953"],
-      };
-      var SIR_SOUTH_LINE = [
-        SIR_SOUTHBEACH_START,
-        [40.6180289318403, -74.0718841800059],  // Langere and Willow
-        [40.6170183167189, -74.0717930180374],  // Langere and Lynhurst
-        SIR_ROSEBANK,
-        SIR_BELAIR_ROAD,
-        SIR_FORT_WADSWORTH,
-        SIR_ARROWCHAR,
-        SIR_CEDAR_AVENUE,
-        [40.5952892640562, -74.0655649726447],  // Jackson Avenue and Railroad Avenue.
-        [40.5930651260183, -74.0659190651822],  // Ragazzi Lane
-        [40.5918764894678, -74.0665841666530],  // Sunnymeade
-        SIR_SOUTH_BEACH,
-        SIR_WENTWORTH_AVENUE,
-      ];
-      L.polyline(SIR_SOUTH_LINE, {color: 'black',  weight: 4}).addTo(map);
-      L.polyline(SIR_SOUTH_LINE, {color: SIR_BLUE_DARK, weight: 3}).addTo(map).bindPopup("S.I.R. South Beach Branch (closed 1953)");
-      for (var station_name in SIR_SOUTH_STATIONS) {
-        L.circle(
-          SIR_SOUTH_STATIONS[station_name][0],
-            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE_DARK}
-          ).addTo(map).bindPopup(station_name + " (" + SIR_SOUTH_STATIONS[station_name][1] + ")");
-      }
+    a:link, a:visited {
+        color: inherit;
+    }
 
-      // NORTH SHORE BRANCH (https://en.wikipedia.org/wiki/North_Shore_Branch)
-      var SIR_NORTH_STATIONS = {
-        "NBR": [[40.6469,  -74.0893], "New Brighton (February 23, 1886 -- March 31, 1953)"],  // at the north end of Westervelt Avenue and Richmond Terrace (near Jersey Street)
-        "SSH": [[40.6453,  -74.1017], "Sailors' Snug Harbor (February 23, 1886 -- March 31, 1953)"],  // It is at the northernmost end of the Snug Harbor Cultural Center and Botanical Garden
-        "LVG": [[40.64545, -74.1088], "Livingston (February 23, 1886 -- March 31, 1953)"],  // north of Richmond Terrace at Bard Avenue
-        "WNB": [[40.6415,  -74.1173], "West New Brighton (February 23, 1886 -- March 31, 1953)"],  // north of Richmond Terrace between North Burgher Avenue and Broadway
-        "PTR": [[40.6391,  -74.1311], "Port Richmond (February 23, 1886 -- March 31, 1953)"],  // Located in Port Richmond on a concrete trestle at Park Avenue and Church Street
-        "HBR": [[40.6338,  -74.1601], "Harbor Road (1935/1937? -- March 31, 1953)"],  // under the overpass at the highest point of Harbor Road
-        "ARL": [[40.6335,  -74.1661], "Arlington (1890? -- March 31, 1953)"],  // under the South Avenue overpass, between Arlington Place and Brabant Street
-      };
-      var SIR_NORTH_LINE = [
-        SIR_MAIN_STATIONS["STG"][0],
-        [40.6458889902596, -74.0774811898533],  // Hamilton Avenue
-        [40.6475384847319, -74.0805008962667],  // Nicholas Street
-        [40.6485969038181, -74.0852607208130],  // St Peters
-        [40.6477577731210, -74.0874841492039],  // Westervelt Ave
-        SIR_NORTH_STATIONS["NBR"][0],
-        [40.6449533835709, -74.0959637015412],  // Lafayette Avenue
-        [40.6449213665837, -74.0997105891454],  // Tysen Street
-        SIR_NORTH_STATIONS["SSH"][0],
-        [40.6454938386274, -74.1046177546879],
-        SIR_NORTH_STATIONS["LVG"][0],
-        [40.6445098046694, -74.1116387438568],
-        [40.6415743642890, -74.1165601746248],  // North Burgher
-        SIR_NORTH_STATIONS["WNB"][0],
-        [40.6408023031470, -74.1210683903131],  // North Shore Waterfront Park
-        [40.6394137515201, -74.1254603657952],  // ??
-        SIR_NORTH_STATIONS["PTR"][0],
-        SIR_NORTH_STATIONS["HBR"][0],
-        SIR_NORTH_STATIONS["ARL"][0],
-      ];
-      L.polyline(SIR_NORTH_LINE, {color: 'black',  weight: 4}).addTo(map);
-      L.polyline(SIR_NORTH_LINE, {color: SIR_BLUE_DARK, weight: 3}).addTo(map);
-      for (var key in SIR_NORTH_STATIONS) {
-        L.circle(
-          SIR_NORTH_STATIONS[key][0],
-            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE_DARK}
-          ).addTo(map).bindPopup(SIR_NORTH_STATIONS[key][1]);
-      }
+    .sect {
+      font-size: 50%;
+      text-decoration: none;
+      vertical-align: top;
+    }
 
-      // Bay Ridge 4th Avenue BMT
-      var BMT_4TH_STATIONS = {
-        "59":             [[40.6413601873808, -74.0178487614985], "59th Street"],
-        "BRAve":          [[40.6347678186816, -74.0234382651507], "Bay Ridge Avenue"],
-        "77":             [[40.6295594278543, -74.0255356700721], "77th Street"],
-        "86":             [[40.6228054375383, -74.0283038488705], "86th Street"],
-        "95":             [[40.6161874144205, -74.0310235406360], "95th Street"],
-      };
-      var BMT_4TH_LINE = [
-        [40.701412408681506, -74.01251181092917],  // Whitehall station (roughly)
-        [40.696417379170505, -74.0002336056721],  // [Montague Tunnel, BK]
-        [40.694383, -73.992593],  // Court Street Station
-        [40.692187, -73.986266],  // Jay St-Metrotech Station
-        [40.689773, -73.981347],  // Dekalb Ave Station
-        [40.687807675056185, -73.97840394264804],  // [Fulton Street curve]
-        [40.68509125181593, -73.97798565146019],  // [crossing Flatbush]
-        [40.684427, -73.978328],  // Atlantic Avenue Barclays Center Station
-        [40.67725681696425, -73.98311882702026],  // Union Street Station
-        [40.67079800852151, -73.98837428040632],  // 9th Street Station
-        [40.665407, -73.992950],  // Prospect Av Station
-        // ... skipping some stations
-        BMT_4TH_STATIONS["59"][0],  // 59 Street Station
-        [40.6368160424701, -74.0226175414859],  // Corner of 67th St and 4th Ave
-        BMT_4TH_STATIONS["BRAve"][0],
-        BMT_4TH_STATIONS["77"][0],
-        BMT_4TH_STATIONS["86"][0],
-        BMT_4TH_STATIONS["95"][0],
-      ]
-      L.polyline(BMT_4TH_LINE, {color: 'black',  weight: 6}).addTo(map);
-      L.polyline(BMT_4TH_LINE, {color: 'yellow', weight: 5}).addTo(map);
-      for (var key in BMT_4TH_STATIONS) {
-        L.circle(
-          BMT_4TH_STATIONS[key][0],
-            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: 'yellow'}
-          ).addTo(map).bindPopup(BMT_4TH_STATIONS[key][1]);
-      }
+    /* To overide the default list bullets with characters. */
+    ul {
+      position: relative;
+      list-style: none;
+      margin-left: 0;
+      padding-left: 3em;
+    }
+
+    .source3s:before {
+      content: "★★★";
+      position: absolute;
+      left: 0;
+    }
+
+    .source2s:before {
+      content: "☆★★";
+      position: absolute;
+      left: 0;
+    }
+
+    .source1s:before {
+      content: "☆☆★";
+      position: absolute;
+      left: 0;
+    }
+
+    .source0s:before {
+      content: "☆☆☆";
+      position: absolute;
+      left: 0;
+    }
+  </style>
+
+  <!-- Support content for map library Leaflet, https://leafletjs.com/ -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>  
+</head>
+
+<body>
+
+<header>
+  <h1>Staten Island Subway Tunnels</h1>
+  <p>
+    Maps and documents regarding the many proposals to build mass-transit tunnels to connect the <a href="https://en.wikipedia.org/wiki/Boroughs_of_New_York_City">New York City borough</a> of <a href="https://en.wikipedia.org/wiki/Staten_Island">Staten Island (Richmond Country)</a> with the boroughs of <a href="https://en.wikipedia.org/wiki/Brooklyn">Brooklyn</a> and <a href="https://en.wikipedia.org/wiki/Manhattan">Manhattan</a>.
+  </p>
+</header>
+
+<p>
+  <span style="font-style: italic;">A note on style</span>: This page is intended to be both informational and a "literature review." Every piece of information should be linked back to a primary source as much as possible. In descending order of preference: government records (★★★), newspapers of note (★★), "primary source" personal websites (★), and finally Wikipedia.
+</p>
+
+<h2>The Map <a class="sect" href="#map" id="map">(&sect;)</a></h2>
+
+<p>
+  <span style="font-style: italic;">How to use</span>: TODO.
+</p>
+
+<div style="display: inline-block; position: relative; width: 100%;">
+  <div style="margin-top: 75%"></div>
+  <div id="mapid" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;"></div>
+</div>
+
+<h2>The Existing Lines <a class="sect" href="#lines" id="lines">(&sect;)</a></h2>
+
+<h3>BMT Fourth Avenue Line [<a href="https://en.wikipedia.org/wiki/BMT_Fourth_Avenue_Line">wiki</a>]</h3>
+
+<p>
+  <ul class="source">
+    <li class="source3s">
+      <i>Fourth Avenue Subway, Brooklyn’s New Transportation Line</i>. (1915).
+      Public Service Commission for the First District, New York City, NY.
+      [<a href="https://www.google.com/books/edition/_/XoxBAQAAMAAJ">Google Books</a>]
+    </li>
+    <li class="source0s">
+      Wikipedia: <a href="https://en.wikipedia.org/wiki/BMT_Fourth_Avenue_Line">BMT Fourth Avenue Line</a>
+    </li>
+  </ul>
+</p>
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+
+<h2>The Tunnels</h2>
+
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 
 
-      // Baltimore and Ohio Railroad tunnel
-      var bando_north_line = [
-          [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
-          [40.6300215,-74.0403786],  // Old glory lookout
-      ];
-      var bando_south_line = [
-          [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
-          [40.6161847,-74.0399575],  // shore road field house 
-      ];
-      L.polyline(bando_north_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
-      L.polyline(bando_south_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
-      L.polyline(bando_north_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
-      L.polyline(bando_south_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+  <script>
+    'use strict';
+
+    var map = L.map('mapid').setView([40.655135, -74.047625], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+    }).addTo(map);
+
+    // https://en.wikipedia.org/wiki/Staten_Island_Railway
+    var SIR_BLUE = '#0078C6';
+    var SIR_BLUE_DARK = '#003D66';  // 39%->20% https://www.w3schools.com/colors/colors_picker.asp
+    // MAIN BRANCH.
+    var SIR_MAIN_STATIONS = {
+      "STG": [[40.6430007812499, -74.0744481020592], "St. George Terminal (March 7, 1886 -- )"],
+      "TOM": [[40.6371513867253, -74.0748827435837], "Tompkinsville (July 31, 1884 -- )"],
+      "STA": [[40.6279531260000, -74.0751670814817], "Stapleton (July 31, 1884 -- )"],
+      "CLI": [[40.6215000653134, -74.0714923696584], "Clifton (April 23, 1860 -- )"],
+      "GRA": [[40.6031183056500, -74.0840607126536], "Grasmere (1886 -- "],
+    };
+    var SIR_MAIN_LINE = [
+      SIR_MAIN_STATIONS["STG"][0],
+      [40.6389974912652, -74.0753595686456],  // Bay Street corner
+      SIR_MAIN_STATIONS["TOM"][0],
+      [40.6332299178238, -74.0743294621114],  // Staten Island Siphon corner
+      [40.6309285929442, -74.0752633594733],  // Baltic Street corner
+      SIR_MAIN_STATIONS["STA"][0],
+      [40.6255118501751, -74.0745011350111],  // Broad Street corner
+      SIR_MAIN_STATIONS["CLI"][0],
+      [40.6203814733097, -74.0711275625871],  // Clifton curve
+      [40.6193710876916, -74.0714762965699],  // Clifton curve
+      [40.6185540273574, -74.0721729232036],  // Clifton curve
+      [40.6169569155168, -74.0745550445637],  // Tompkins Ave bridge
+      [40.6092913157698, -74.0792543323713],  // Fox Hill substation
+      SIR_MAIN_STATIONS["GRA"][0],
+    ];
+
+    // SOUTH BEACH BRANCH (https://en.wikipedia.org/wiki/South_Beach_Branch)
+    var SIR_SOUTHBEACH_START    = [40.6190788617981, -74.0717232860908];  // [40.618889, -74.071667];
+    var SIR_ROSEBANK            = [40.614639, -74.070278];  // Tilson Place between Virginia Avenue and St. Mary's Avenue.
+    var SIR_BELAIR_ROAD         = [40.610278, -74.067222];  // Vermont Avenue, between Belair Road & St. Johns Avenue.
+    var SIR_FORT_WADSWORTH      = [40.606972, -74.066472];
+    var SIR_ARROWCHAR           = [40.599722, -74.066528];  // Major Avenue.
+    var SIR_CEDAR_AVENUE        = [40.5966266919705, -74.0655381083032];  // [40.596583, -74.065639];
+    var SIR_SOUTH_BEACH         = [40.590972, -74.067639];
+    var SIR_WENTWORTH_AVENUE    = [40.589028, -74.069861];  // Oceanside Avenue and Wentworth Avenue.
+    var SIR_SOUTH_STATIONS = {
+      "Rosebank":         [SIR_ROSEBANK,          "January 1, 1888 -- March 31, 1953"],
+      "Belair Road":      [SIR_BELAIR_ROAD,       "January 1, 1888 -- March 31, 1953"],
+      "Fort Wadsworth":   [SIR_FORT_WADSWORTH,    "January 1, 1888 -- March 31, 1953"],
+      "Arrowchar":        [SIR_ARROWCHAR,         "January 1, 1888 -- March 31, 1953"],
+      "Cedar Avenue":     [SIR_CEDAR_AVENUE,      "1934 -- March 31, 1953"],
+      "South Beach":      [SIR_SOUTH_BEACH,       "1889 -- March 31, 1953"],
+      "Wentworth Avenue": [SIR_WENTWORTH_AVENUE,  "1925 -- March 31, 1953"],
+    };
+    var SIR_SOUTH_LINE = [
+      SIR_SOUTHBEACH_START,
+      [40.6180289318403, -74.0718841800059],  // Langere and Willow
+      [40.6170183167189, -74.0717930180374],  // Langere and Lynhurst
+      SIR_ROSEBANK,
+      SIR_BELAIR_ROAD,
+      SIR_FORT_WADSWORTH,
+      SIR_ARROWCHAR,
+      SIR_CEDAR_AVENUE,
+      [40.5952892640562, -74.0655649726447],  // Jackson Avenue and Railroad Avenue.
+      [40.5930651260183, -74.0659190651822],  // Ragazzi Lane
+      [40.5918764894678, -74.0665841666530],  // Sunnymeade
+      SIR_SOUTH_BEACH,
+      SIR_WENTWORTH_AVENUE,
+    ];
+    L.polyline(SIR_SOUTH_LINE, {color: 'black',  weight: 4}).addTo(map);
+    L.polyline(SIR_SOUTH_LINE, {color: SIR_BLUE_DARK, weight: 3}).addTo(map).bindPopup("S.I.R. South Beach Branch (closed 1953)");
+    for (var station_name in SIR_SOUTH_STATIONS) {
+      L.circle(
+        SIR_SOUTH_STATIONS[station_name][0],
+          {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE_DARK}
+        ).addTo(map).bindPopup(station_name + " (" + SIR_SOUTH_STATIONS[station_name][1] + ")");
+    }
+
+    // NORTH SHORE BRANCH (https://en.wikipedia.org/wiki/North_Shore_Branch)
+    var SIR_NORTH_STATIONS = {
+      "NBR": [[40.6469,  -74.0893], "New Brighton (February 23, 1886 -- March 31, 1953)"],  // at the north end of Westervelt Avenue and Richmond Terrace (near Jersey Street)
+      "SSH": [[40.6453,  -74.1017], "Sailors' Snug Harbor (February 23, 1886 -- March 31, 1953)"],  // It is at the northernmost end of the Snug Harbor Cultural Center and Botanical Garden
+      "LVG": [[40.64545, -74.1088], "Livingston (February 23, 1886 -- March 31, 1953)"],  // north of Richmond Terrace at Bard Avenue
+      "WNB": [[40.6415,  -74.1173], "West New Brighton (February 23, 1886 -- March 31, 1953)"],  // north of Richmond Terrace between North Burgher Avenue and Broadway
+      "PTR": [[40.6391,  -74.1311], "Port Richmond (February 23, 1886 -- March 31, 1953)"],  // Located in Port Richmond on a concrete trestle at Park Avenue and Church Street
+      "HBR": [[40.6338,  -74.1601], "Harbor Road (1935/1937? -- March 31, 1953)"],  // under the overpass at the highest point of Harbor Road
+      "ARL": [[40.6335,  -74.1661], "Arlington (1890? -- March 31, 1953)"],  // under the South Avenue overpass, between Arlington Place and Brabant Street
+    };
+    var SIR_NORTH_LINE = [
+      SIR_MAIN_STATIONS["STG"][0],
+      [40.6458889902596, -74.0774811898533],  // Hamilton Avenue
+      [40.6475384847319, -74.0805008962667],  // Nicholas Street
+      [40.6485969038181, -74.0852607208130],  // St Peters
+      [40.6477577731210, -74.0874841492039],  // Westervelt Ave
+      SIR_NORTH_STATIONS["NBR"][0],
+      [40.6449533835709, -74.0959637015412],  // Lafayette Avenue
+      [40.6449213665837, -74.0997105891454],  // Tysen Street
+      SIR_NORTH_STATIONS["SSH"][0],
+      [40.6454938386274, -74.1046177546879],
+      SIR_NORTH_STATIONS["LVG"][0],
+      [40.6445098046694, -74.1116387438568],
+      [40.6415743642890, -74.1165601746248],  // North Burgher
+      SIR_NORTH_STATIONS["WNB"][0],
+      [40.6408023031470, -74.1210683903131],  // North Shore Waterfront Park
+      [40.6394137515201, -74.1254603657952],  // ??
+      SIR_NORTH_STATIONS["PTR"][0],
+      SIR_NORTH_STATIONS["HBR"][0],
+      SIR_NORTH_STATIONS["ARL"][0],
+    ];
+    L.polyline(SIR_NORTH_LINE, {color: 'black',  weight: 4}).addTo(map);
+    L.polyline(SIR_NORTH_LINE, {color: SIR_BLUE_DARK, weight: 3}).addTo(map);
+    for (var key in SIR_NORTH_STATIONS) {
+      L.circle(
+        SIR_NORTH_STATIONS[key][0],
+          {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE_DARK}
+        ).addTo(map).bindPopup(SIR_NORTH_STATIONS[key][1]);
+    }
+
+    // Bay Ridge 4th Avenue BMT
+    var BMT_4TH_STATIONS = {
+      "59":             [[40.6413601873808, -74.0178487614985], "59th Street"],
+      "BRAve":          [[40.6347678186816, -74.0234382651507], "Bay Ridge Avenue"],
+      "77":             [[40.6295594278543, -74.0255356700721], "77th Street"],
+      "86":             [[40.6228054375383, -74.0283038488705], "86th Street"],
+      "95":             [[40.6161874144205, -74.0310235406360], "95th Street"],
+    };
+    var BMT_4TH_LINE = [
+      [40.701412408681506, -74.01251181092917],  // Whitehall station (roughly)
+      [40.696417379170505, -74.0002336056721],  // [Montague Tunnel, BK]
+      [40.694383, -73.992593],  // Court Street Station
+      [40.692187, -73.986266],  // Jay St-Metrotech Station
+      [40.689773, -73.981347],  // Dekalb Ave Station
+      [40.687807675056185, -73.97840394264804],  // [Fulton Street curve]
+      [40.68509125181593, -73.97798565146019],  // [crossing Flatbush]
+      [40.684427, -73.978328],  // Atlantic Avenue Barclays Center Station
+      [40.67725681696425, -73.98311882702026],  // Union Street Station
+      [40.67079800852151, -73.98837428040632],  // 9th Street Station
+      [40.665407, -73.992950],  // Prospect Av Station
+      // ... skipping some stations
+      BMT_4TH_STATIONS["59"][0],  // 59 Street Station
+      [40.6368160424701, -74.0226175414859],  // Corner of 67th St and 4th Ave
+      BMT_4TH_STATIONS["BRAve"][0],
+      BMT_4TH_STATIONS["77"][0],
+      BMT_4TH_STATIONS["86"][0],
+      BMT_4TH_STATIONS["95"][0],
+    ]
+    L.polyline(BMT_4TH_LINE, {color: 'black',  weight: 6}).addTo(map);
+    L.polyline(BMT_4TH_LINE, {color: 'yellow', weight: 5}).addTo(map);
+    for (var key in BMT_4TH_STATIONS) {
+      L.circle(
+        BMT_4TH_STATIONS[key][0],
+          {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: 'yellow'}
+        ).addTo(map).bindPopup(BMT_4TH_STATIONS[key][1]);
+    }
 
 
-      // (1912) Dual Contracts Route 51
-      // https://babel.hathitrust.org/cgi/pt?id=coo.31924106194131&view=1up&seq=155&q1=staten
-      // TODO: Clean up SI end
-      var dualconR51 = [
-        [40.6380428590818, -74.0213353539724],  // "south side of 65th street"
-        [40.6376397419235, -74.0235722282747],  // "block bounded by fourth avenue, third avenue, 66th street and 67th street"
-        [40.6377985459431, -74.0251010272583],  // "under 67th street at or near the centre line of Third avenue"
-        [40.6387999037443, -74.0276171161908],  // [2nd and 67th]
-        [40.6396385684067, -74.0303099504064],  // "to colonial road"
-        [40.6402696914570, -74.0357385278499], // "across Shore road to a point under water-front property about midway between 67th street produced and 68th street"
-        [40.6388854431669, -74.0736007403748],  // "north of arrieta street and east of stuyvesant place"
-        // Northwesterly branch
-        [40.6392360577766, -74.0748561438280],  //????
-        [40.6404486561136, -74.0757143934755],  //????
-        [40.6413770044288, -74.0758806838913],  //????  to a point in Stuyvesant place at or near Weiner place
-        SIR_MAIN_STATIONS["STG"][0],
-      ];
-      var dualconR51south = [
-        [40.6388854431669, -74.0736007403748],  // "north of arrieta street and east of stuyvesant place"
-        [40.6384555940411, -74.0754247569421],  // ???
-        [40.6377535346203, -74.0760308721880],  // "under... south shore branch... to a point in arrietta street at or near its intersection with Syu. place and Central avenue"
-        [40.6359228534196, -74.0758324366710],  // ???
-        [40.6347501049599, -74.0745664838285],  // ???
-      ];
-      L.polyline(dualconR51, {color: 'black',   weight: 6}).addTo(map);
-      L.polyline(dualconR51south, {color: 'black',   weight: 6}).addTo(map);
-      L.polyline(dualconR51, {color: '#99FF99', weight: 5}).addTo(map);
-      L.polyline(dualconR51south, {color: '#99FF99', weight: 5}).addTo(map);
+    // Baltimore and Ohio Railroad tunnel
+    var bando_north_line = [
+        [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
+        [40.6300215,-74.0403786],  // Old glory lookout
+    ];
+    var bando_south_line = [
+        [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
+        [40.6161847,-74.0399575],  // shore road field house 
+    ];
+    L.polyline(bando_north_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+    L.polyline(bando_south_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+    L.polyline(bando_north_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+    L.polyline(bando_south_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+
+
+    // (1912) Dual Contracts Route 51
+    // https://babel.hathitrust.org/cgi/pt?id=coo.31924106194131&view=1up&seq=155&q1=staten
+    // TODO: Clean up SI end
+    var dualconR51 = [
+      [40.6380428590818, -74.0213353539724],  // "south side of 65th street"
+      [40.6376397419235, -74.0235722282747],  // "block bounded by fourth avenue, third avenue, 66th street and 67th street"
+      [40.6377985459431, -74.0251010272583],  // "under 67th street at or near the centre line of Third avenue"
+      [40.6387999037443, -74.0276171161908],  // [2nd and 67th]
+      [40.6396385684067, -74.0303099504064],  // "to colonial road"
+      [40.6402696914570, -74.0357385278499], // "across Shore road to a point under water-front property about midway between 67th street produced and 68th street"
+      [40.6388854431669, -74.0736007403748],  // "north of arrieta street and east of stuyvesant place"
+      // Northwesterly branch
+      [40.6392360577766, -74.0748561438280],  //????
+      [40.6404486561136, -74.0757143934755],  //????
+      [40.6413770044288, -74.0758806838913],  //????  to a point in Stuyvesant place at or near Weiner place
+      SIR_MAIN_STATIONS["STG"][0],
+    ];
+    var dualconR51south = [
+      [40.6388854431669, -74.0736007403748],  // "north of arrieta street and east of stuyvesant place"
+      [40.6384555940411, -74.0754247569421],  // ???
+      [40.6377535346203, -74.0760308721880],  // "under... south shore branch... to a point in arrietta street at or near its intersection with Syu. place and Central avenue"
+      [40.6359228534196, -74.0758324366710],  // ???
+      [40.6347501049599, -74.0745664838285],  // ???
+    ];
+    L.polyline(dualconR51, {color: 'black',   weight: 6}).addTo(map);
+    L.polyline(dualconR51south, {color: 'black',   weight: 6}).addTo(map);
+    L.polyline(dualconR51, {color: '#99FF99', weight: 5}).addTo(map);
+    L.polyline(dualconR51south, {color: '#99FF99', weight: 5}).addTo(map);
+    
+
+
+    // STATEN ISLAND COMMITTEE OFFERS PLAN FOR DIRECT ROUTE
+    // Harbor route.
+    var DIRECT_ELLIS_LINE = [
+      [40.7030805959415, -74.0148668110596],  // "West side of Manhattan near its southern extremity..."
+      [40.6993468378643, -74.0384639580328],  // "... to Ellis island, ..."
+      [40.6974217698410, -74.0422919873131],  // [Ellis Island south]
+      [40.6573747267662, -74.0653520071868],  // "thence to Robbins Reef, ..."  [lighthouse]
+      SIR_MAIN_STATIONS["STG"][0],            // "...under the Kill van Kull to St George and Tompkinsville, by surface line to Tottenville"
+    ];
+    L.polyline(DIRECT_ELLIS_LINE, {color: 'black',   weight: 6}).addTo(map);
+    L.polyline(DIRECT_ELLIS_LINE, {color: '#7c45a4', weight: 5}).addTo(map);
+    // NJ coastline route.
+    var DIRECT_NJ_LINE = [
+      [40.7030805959415, -74.0148668110596],  // "West side of Manhattan near its southern extremity"
+      [40.7071707039194, -74.0348329412306],  // [Central Railroad of NJ Terminal]
+      [40.7099468010410, -74.0520803669546],  // [Johnston/Arena/Audrey Zapp/Phillip intersection]
+      [40.7102472745650, -74.0550223969820],  // [curve]
+      [40.7098753982395, -74.0564720606952],  // "a point near Communipaw" [Liberty State Park Light Rail Station]
+      [40.6992388843320, -74.0784845968185],  // [Richard St]
+      [40.6868444466846, -74.0941803987763],  // [big highway interchange]
+      [40.6787720324845, -74.1017249900245],  // [45th Street Light Rail Station]
+      [40.6610748456792, -74.1166250298059],  // "Constable Hook" [22nd Street Light Rail Station]
+      [40.6516037080157, -74.1200788234671],  // [East 5th Street]
+      [40.6461587931103, -74.1202298608254],  // [Ingham Avenue]
+      [40.6411861447098, -74.1199264451925],  // "tunnel under the Kill van Kull and tracks running from it to Richmond Terrace..."
+      [40.6408033640147, -74.1191058500002],  // [curve]
+      [40.6408685388164, -74.1177011669869],  // [curve]
+      [40.6415708775152, -74.1165610295056],  // [curve]
+
+    ];
+    L.polyline(DIRECT_NJ_LINE, {color: 'black',   weight: 6}).addTo(map);
+    L.polyline(DIRECT_NJ_LINE, {color: '#7c45a4', weight: 5}).addTo(map);
+
+    // Render current SIR last.
+    L.polyline(SIR_MAIN_LINE, {color: 'black',  weight: 6}).addTo(map);
+    L.polyline(SIR_MAIN_LINE, {color: SIR_BLUE, weight: 5}).addTo(map);
+    for (var key in SIR_MAIN_STATIONS) {
+      L.circle(
+          SIR_MAIN_STATIONS[key][0],
+          {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE}
+        ).addTo(map).bindPopup(SIR_MAIN_STATIONS[key][1]);
+    }
       
-
-
-      // STATEN ISLAND COMMITTEE OFFERS PLAN FOR DIRECT ROUTE
-      // Harbor route.
-      var DIRECT_ELLIS_LINE = [
-        [40.7030805959415, -74.0148668110596],  // "West side of Manhattan near its southern extremity..."
-        [40.6993468378643, -74.0384639580328],  // "... to Ellis island, ..."
-        [40.6974217698410, -74.0422919873131],  // [Ellis Island south]
-        [40.6573747267662, -74.0653520071868],  // "thence to Robbins Reef, ..."  [lighthouse]
-        SIR_MAIN_STATIONS["STG"][0],            // "...under the Kill van Kull to St George and Tompkinsville, by surface line to Tottenville"
-      ];
-      L.polyline(DIRECT_ELLIS_LINE, {color: 'black',   weight: 6}).addTo(map);
-      L.polyline(DIRECT_ELLIS_LINE, {color: '#7c45a4', weight: 5}).addTo(map);
-      // NJ coastline route.
-      var DIRECT_NJ_LINE = [
-        [40.7030805959415, -74.0148668110596],  // "West side of Manhattan near its southern extremity"
-        [40.7071707039194, -74.0348329412306],  // [Central Railroad of NJ Terminal]
-        [40.7099468010410, -74.0520803669546],  // [Johnston/Arena/Audrey Zapp/Phillip intersection]
-        [40.7102472745650, -74.0550223969820],  // [curve]
-        [40.7098753982395, -74.0564720606952],  // "a point near Communipaw" [Liberty State Park Light Rail Station]
-        [40.6992388843320, -74.0784845968185],  // [Richard St]
-        [40.6868444466846, -74.0941803987763],  // [big highway interchange]
-        [40.6787720324845, -74.1017249900245],  // [45th Street Light Rail Station]
-        [40.6610748456792, -74.1166250298059],  // "Constable Hook" [22nd Street Light Rail Station]
-        [40.6516037080157, -74.1200788234671],  // [East 5th Street]
-        [40.6461587931103, -74.1202298608254],  // [Ingham Avenue]
-        [40.6411861447098, -74.1199264451925],  // "tunnel under the Kill van Kull and tracks running from it to Richmond Terrace..."
-        [40.6408033640147, -74.1191058500002],  // [curve]
-        [40.6408685388164, -74.1177011669869],  // [curve]
-        [40.6415708775152, -74.1165610295056],  // [curve]
-
-      ];
-      L.polyline(DIRECT_NJ_LINE, {color: 'black',   weight: 6}).addTo(map);
-      L.polyline(DIRECT_NJ_LINE, {color: '#7c45a4', weight: 5}).addTo(map);
-
-      // Render current SIR last.
-      L.polyline(SIR_MAIN_LINE, {color: 'black',  weight: 6}).addTo(map);
-      L.polyline(SIR_MAIN_LINE, {color: SIR_BLUE, weight: 5}).addTo(map);
-      for (var key in SIR_MAIN_STATIONS) {
-        L.circle(
-            SIR_MAIN_STATIONS[key][0],
-            {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: SIR_BLUE}
-          ).addTo(map).bindPopup(SIR_MAIN_STATIONS[key][1]);
-      }
-        
-      map.on('click', function(e) {
-        var data = [new ClipboardItem({ "text/plain": new Blob([e.latlng.lat.toFixed(13) + ", " + e.latlng.lng.toFixed(13)], { type: "text/plain" }) })];
-        navigator.clipboard.write(data).then(function() {
-          console.log("Copied to clipboard successfully!");
-        }, function() {
-          console.error("Unable to write to clipboard. :-(");
-        });
+    map.on('click', function(e) {
+      var data = [new ClipboardItem({ "text/plain": new Blob([e.latlng.lat.toFixed(13) + ", " + e.latlng.lng.toFixed(13)], { type: "text/plain" }) })];
+      navigator.clipboard.write(data).then(function() {
+        console.log("Copied to clipboard successfully!");
+      }, function() {
+        console.error("Unable to write to clipboard. :-(");
       });
-    </script>
-  </body>
+    });
+  </script>
+
+</body>
 </html>
 
 <!--
@@ -294,46 +473,46 @@ In 1890, Staten Island developer Erastus Wiman sponsored a plan by the Baltimore
 
 (1890) BALTIMORE AND OHIO RAILROAD
 
-    TO TUNNEL THE NARROWS; AND THUS IMPROVE NEW-YORK'S COMMERCIAL FACILITIES.
-    MR. ERASTUS WIMAN'S LATEST PLAN UPON WHICH AND HE AND OTHERS HAVE LONG BEEN MEDITATING.
-    Aug 5 1890 Nytimes
-    https://www.nytimes.com/1890/08/05/archives/to-tunnel-the-narrows-and-thus-improve-newyorks-commercial.html
-    https://timesmachine.nytimes.com/timesmachine/1890/08/05/103255981.pdf
+  TO TUNNEL THE NARROWS; AND THUS IMPROVE NEW-YORK'S COMMERCIAL FACILITIES.
+  MR. ERASTUS WIMAN'S LATEST PLAN UPON WHICH AND HE AND OTHERS HAVE LONG BEEN MEDITATING.
+  Aug 5 1890 Nytimes
+  https://www.nytimes.com/1890/08/05/archives/to-tunnel-the-narrows-and-thus-improve-newyorks-commercial.html
+  https://timesmachine.nytimes.com/timesmachine/1890/08/05/103255981.pdf
 
-    A spot near Fort Wadsworth, about at the foot of Vanderbilt Avenue, to Bay Ridge.
-        -> 40.622692,-74.0733963
-    Length 1 3/4 miles.
-        -> Old glory lookout  40.6300215,-74.0403786
-        -> shore road field house  40.6161847,-74.0399575
+  A spot near Fort Wadsworth, about at the foot of Vanderbilt Avenue, to Bay Ridge.
+      -> 40.622692,-74.0733963
+  Length 1 3/4 miles.
+      -> Old glory lookout  40.6300215,-74.0403786
+      -> shore road field house  40.6161847,-74.0399575
 
 ============================================================================================================
 
 (1912) DUAL CONTRACTS
 
-    https://en.wikipedia.org/wiki/Dual_Contracts
-    ????
-    
-    https://timesmachine.nytimes.com/timesmachine/1919/02/13/97073465.pdf
-    "board of estimate july 11 of 1912"
-    "route 51"
-    "build a tunnel from sixty-sixth street bay ridge"
-    "to arrieta street tompkinsville"
+  https://en.wikipedia.org/wiki/Dual_Contracts
+  ????
+  
+  https://timesmachine.nytimes.com/timesmachine/1919/02/13/97073465.pdf
+  "board of estimate july 11 of 1912"
+  "route 51"
+  "build a tunnel from sixty-sixth street bay ridge"
+  "to arrieta street tompkinsville"
 
 ============================================================================================================
 
 
 (2019) STATEN ISLAND SUBWAY COMMITTEE
 
-    https://timesmachine.nytimes.com/timesmachine/1919/03/25/102856002.pdf
-    
-    The suggested route from the Battery provides for a five-section subway from the west side
-    of Manhattan near its southern extremity to Ellis Island, thence to the Robbins Reef, under
-    the Kill van Jull to St. George and Tompkinsvile, and by surface line to Tottenville.
+  https://timesmachine.nytimes.com/timesmachine/1919/03/25/102856002.pdf
+  
+  The suggested route from the Battery provides for a five-section subway from the west side
+  of Manhattan near its southern extremity to Ellis Island, thence to the Robbins Reef, under
+  the Kill van Jull to St. George and Tompkinsvile, and by surface line to Tottenville.
 
-    Another plan suggested by the committee calls for a tunnel under the North River from Manhattan
-    to a point near Communipaw, thence by elevated along the New Jersey shore to Constable Hook,
-    a tunnel under the Kill van Kull, and tracks from it to Richmond Terrace, Stuyvesant Place,
-    Tompkinsville and Tottenville.
+  Another plan suggested by the committee calls for a tunnel under the North River from Manhattan
+  to a point near Communipaw, thence by elevated along the New Jersey shore to Constable Hook,
+  a tunnel under the Kill van Kull, and tracks from it to Richmond Terrace, Stuyvesant Place,
+  Tompkinsville and Tottenville.
 
 
 
@@ -345,8 +524,8 @@ NEED STATEN ISLAND RAILWAY CIRCA 1900s
 
 <!--
 https://www.silive.com/northshore/2010/06/neighborhood_still_memorialize.html
-  No longer on the Tompkinsville map are Arietta Street (the section of Victory that runs below Bay Street),
-  Sarah Ann Street (the end of Van Duzer, beyond Hannah), and Griffin Street
-  (the section of Bay between Hannah and Victory) — also named for Tompkins' children.
+No longer on the Tompkinsville map are Arietta Street (the section of Victory that runs below Bay Street),
+Sarah Ann Street (the end of Van Duzer, beyond Hannah), and Griffin Street
+(the section of Bay between Hannah and Victory) — also named for Tompkins' children.
 
 -->
