@@ -190,11 +190,16 @@
 <h3>BMT Fourth Avenue Line <a class="sect" href="#bmt4" id="bmt4">(&sect;)</a></h3>
 
 <p>
-  The BMT Fourth Avenue Line extends from downtown Brooklyn to <a href="https://en.wikipedia.org/wiki/Bay_Ridge,_Brooklyn">Bay Ridge, Brooklyn</a> (Bay Ridge-95th Street station.) As of mid-2020 the NYC Subway <span style="background-color:#fccc0a; font-weight: bold;">&nbsp;R&nbsp;</span> provides service to the full line, and the <span style="background-color:#fccc0a; font-weight: bold;">&nbsp;N&nbsp;</span> provides service to 59th Street before branching to the BMT Sea Beach Line.
+  The BMT Fourth Avenue Line extends from downtown Brooklyn to <a href="https://en.wikipedia.org/wiki/Bay_Ridge,_Brooklyn">Bay Ridge, Brooklyn</a> (Bay Ridge-95th Street station.) As of 2020 the NYC Subway <span style="background-color:#fccc0a; font-weight: bold;">&nbsp;R&nbsp;</span> provides service to the full line, and the <span style="background-color:#fccc0a; font-weight: bold;">&nbsp;N&nbsp;</span> provides service to 59th Street before branching to the BMT Sea Beach Line.
   <!-- , while the <span style="background-color:#ff6319;">&nbsp;D&nbsp;</span> provides service to 36th Street before branching to the BMT West End Line. -->
 </p>
 <p>
   Construction on the line began November 1909, partially opened in 1915 <cite>(PSC, 1915)</cite>, and was finished with the extension to Bay Ridge-95th Street station opening in October 1925 <cite>(CITE)</cite>. Provisions for tunnels to Staten Island were considered during construction: at around 65th Street <cite>(NYT, 1912-02-16)</cite> and when the extension from 86th Street was built <cite>(NYT, 1922-08-26.)</cite>
+</p>
+<p>
+  <span style="font-style: italic;">On the map</span>: a
+  <span style="background-color:#fccc0a; color:black; border:1px solid #000000; text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  line, extending from the BMT Fourth Avenue terminus of Bay Ridge-95th Street to the <a href="https://en.wikipedia.org/wiki/Montague_Street_Tunnel">Montague Street Tunnel</a> and <a href="https://en.wikipedia.org/wiki/South_Ferry/Whitehall_Street_station">Whitehall Street-South Ferry</a> station in lower Manhattan. This is the route as of 2020 of the <span style="background-color:#fccc0a; font-weight: bold;">&nbsp;R&nbsp;</span>, which continues further Manhattan.
 </p>
 
 <h4>Sources</h4>
@@ -216,6 +221,18 @@
     Wikipedia: <a href="https://en.wikipedia.org/wiki/BMT_Fourth_Avenue_Line">BMT Fourth Avenue Line</a>
   </li>
 </ul>
+
+
+<h3>Staten Island Railway <a class="sect" href="#sir" id="sir">(&sect;)</a></h3>
+
+<p>
+  The <a href="https://en.wikipedia.org/wiki/Staten_Island_Railway">Staten Island Railway (SIR)</a> is a rapid transit line operated by the <a href="https://en.wikipedia.org/wiki/Metropolitan_Transportation_Authority">MTA</a>. It is not connected to the rest of NYC subway system, although it shares some equipment including the "R44" cars <cite>(CITE)</cite>. A railway line from Stapleton to Tottenville (still the terminus as of 2020) was completed in June 1860 <cite>(CITE)</cite>, and was extended to a new combined ferry and rail terminal at St. George in 1886 <cite>(CITE)</cite>. This original Tottenville to St. George line is approximately the same in 2020, although stations have been added and removed over the past 100 years.
+</p>
+
+<p>
+  <span style="font-style: italic;">On the map</span>: the current SIR
+  <span style="background-color:#0078C6; color:black; border:1px solid #000000; text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;</span> is shown from St George as far as Grasmere (but continues on to Tottenville.) The former <a href="https://en.wikipedia.org/wiki/North_Shore_Branch">North Shore Branch</a> <span style="background-color:#003D66; color:black; border:1px solid #000000; text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;</span> is shown from St George to <a href="https://en.wikipedia.org/wiki/Arlington_station_(Staten_Island_Railway)">Arlington</a>, the terminus at the time of closure. The former <a href="https://en.wikipedia.org/wiki/South_Beach_Branch">South Beach Branch</a> <span style="background-color:#003D66; color:black; border:1px solid #000000; text-align:center;">&nbsp;&nbsp;&nbsp;&nbsp;</span> is shown from where it split from the main line near <a href="https://en.wikipedia.org/wiki/Clifton_station_(Staten_Island_Railway)">Clifton</a> to <a href="https://en.wikipedia.org/wiki/Wentworth_Avenue_station">Wentworth Avenue</a>, the terminus at the time of closure.
+</p>
 
 
 
@@ -374,11 +391,11 @@
       BMT_4TH_STATIONS["95"][0],
     ]
     L.polyline(BMT_4TH_LINE, {color: 'black',  weight: 6}).addTo(map);
-    L.polyline(BMT_4TH_LINE, {color: 'yellow', weight: 5}).addTo(map);
+    L.polyline(BMT_4TH_LINE, {color: '#fccc0a', weight: 5}).addTo(map);
     for (var key in BMT_4TH_STATIONS) {
       L.circle(
         BMT_4TH_STATIONS[key][0],
-          {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: 'yellow'}
+          {weight: 1, radius: 20, fillOpacity: 1.0, color: 'black', fillColor: '#fccc0a'}
         ).addTo(map).bindPopup(BMT_4TH_STATIONS[key][1]);
     }
 
