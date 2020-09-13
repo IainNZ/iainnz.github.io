@@ -238,7 +238,59 @@
 
 <h2>The Tunnels</h2>
 
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+<h3>Baltimore & Ohio Tunnel (~1890-1900) <a class="sect" href="#bo1890" id="bo1890">(&sect;)</a></h3>
+
+<ul>
+  <li>
+    The <a href="https://en.wikipedia.org/wiki/Baltimore_and_Ohio_Railroad">Baltimore and Ohio Railroad</a> (BO) owned SIRT.
+  </li>
+  <li>
+    Erastus Wiman ?
+  </li>
+  <li>
+    An article in the New York Times from August 5th, 1890 describes Erastus Wiman's motivations for the tunnel, and says that the tunnel "scheme" has "[for] many months... been quietly promoted." It is primarily centered around moving freight from the mainland to Long Island, following "the construction of the Arthur Kill Bridge, which has... allowed the trunk lines to reach the shores of Staten Island." The article describes the following about the tunnel:
+    <ul>
+      <li>
+        That the "necessities of local rapid transit and other causes made it impracticable to use the present Staten Island Railroad as the means of reaching the mouth of the tunnel," instead suggesting that the tunnel be connected to "the bridge" (Arthur Kill) "by way of the pass known as 'Little Clove'", referring to more direct route through Staten Island.
+      </li>
+      <li>
+        The Staten Island side of the tunnel is described as a "spot near Fort Wadsworth, about at the foot of Vanderbilt Avenue." Fort Wadsworth is where the Verrazzano-Narrows Bridge comes ashore, but Vanderbilt Avenue is somewhat north, near Clifton SIR station (which existed at the time of the proposal.)
+      </li>
+      <li>
+        The Brooklyn side of the tunnel is described only as "Bay Ridge", but the length of the tunnel is given as "about 1¾ miles." Taking this literally suggests a northern landing at a hypothetical intersection between Shore Road and 81st Street, or a southern landing near Shore Road and 95th Street. This length doesn't allow for the possibility of tunnel landing in Owl's Head Park, but the most logical landing is the northern one, as this allows for the possibility of connecting to the LIRR tracks at the 65th Street Yard.
+      </li>
+      <li>
+        There would be "two lines of tunneling", and that "$5,000,000 would easily cover the entire cost" (TODO: 2020 dollars.)
+      </li>
+    </ul>
+  </li>
+  <li>
+    <!-- https://bklyn.newspapers.com/image/50388940 -->
+    An article in the Brooklyn Daily Eagle from May 8th, 1990, primarily about the purchase of "controlling interest in the Long Island [Rail Road]", provides further details about the Wiman tunnel:
+    <ul>
+      <li>
+        The "New Jersey and Staten Island Junction Railroad Company" is said to "control the tunnel rights secured by Erastus Wiman in September 1890," one month after the New York Times article.
+      </li>
+      <li>
+        A representative for the company says they have an informal agreement with various railroad companies for use of their facilities "from Arthur Kill bridge and by tunnel to Thirty-nineth street, South Brooklyn." 39th Street is, as of 2020, still a port (South Brooklyn Marine Terminal) that is connected by rail to the 65th Street Yard near Bay Ridge. It is extremely unlikely that the tunnel literally would go 39th Street. Later on, reference is made to the LIRR "furnish an outlet... at Bay Ridge," presumably referring to near-waterfront surface line.
+      </li>
+      <li>
+        The Pennsylvania Railraod statement quoted in the article makes mention of the "car float" system from Bay Ridge to New Jersey (still in operation as 2020, although not continously from 1900,) but suggests this may be temporary as "ultimately a tunnel from Staten Isalnd to Bay Bridge may be built."
+      </li>
+      <li>
+        Another tunnel "from New York" (meaning Manhattan) connecting to Brooklyn at Hamilton Ave or Joralemon Street is suggested, then travelling down Fourth Avenue to 39th Street. Construction did start on a tunnel landing at Joralemon just three years later, although as part of the IRT system. X years later a tunnel was built to Hamilton Avenue, although not for rail: the Battery Park Tunnel for automobiles. The BMT Fourth Avenue line was eventually built TODO(link above).
+      </li>
+    </ul>
+  </li>
+</ul>
+  
+
+  Wiman NYTimes
+
+
+</p>
+
+
 
 <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
 
@@ -401,18 +453,35 @@
 
 
     // Baltimore and Ohio Railroad tunnel
+    var bando_feeder = [
+      [40.6371303070059, -74.1942601794419],  // End of Arthur Kill
+      [40.6331652372896, -74.1809772494871],  // Junction after Arthur Kill
+      [40.6127113229544, -74.1130547826863],  // "Little Clove" (Clove's Tail)
+      [40.6107403082798, -74.0933420765213],
+      [40.6133628967809, -74.0871384565835],  // start of Vanderbilt Ave
+      [40.6185720616316, -74.0799649723771],  // Vanderbuilt and Park Hill Lane
+      [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
+    ]
     var bando_north_line = [
         [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
         [40.6300215,-74.0403786],  // Old glory lookout
     ];
-    var bando_south_line = [
-        [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
-        [40.6161847,-74.0399575],  // shore road field house 
-    ];
-    L.polyline(bando_north_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
-    L.polyline(bando_south_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
-    L.polyline(bando_north_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
-    L.polyline(bando_south_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+    // var bando_south_line = [
+    //     [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
+    //     [40.6161847,-74.0399575],  // shore road field house 
+    // ];
+    // L.polyline(bando_feeder, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+    // L.polyline(bando_north_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+    // L.polyline(bando_south_line, {color: 'black', weight: 6, dashArray: "5,10"}).addTo(map);
+    // L.polyline(bando_feeder, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+    // L.polyline(bando_north_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+    // L.polyline(bando_south_line, {color: '#FF2211', weight: 5, dashArray: "5,10"}).addTo(map);
+    L.polyline(bando_feeder, {color: 'black', weight: 4}).addTo(map);
+    L.polyline(bando_north_line, {color: 'black', weight: 6}).addTo(map);
+    // L.polyline(bando_south_line, {color: 'black', weight: 6}).addTo(map);
+    L.polyline(bando_feeder, {color: '#FF2211', weight: 3}).addTo(map);
+    L.polyline(bando_north_line, {color: '#FF2211', weight: 5}).addTo(map);
+    // L.polyline(bando_south_line, {color: '#FF2211', weight: 5}).addTo(map);
 
 
     // (1912) Dual Contracts Route 51
