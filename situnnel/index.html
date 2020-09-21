@@ -122,7 +122,7 @@
     }
 
     /* To overide the default list bullets with characters. */
-    ul {
+    #source {
       position: relative;
       list-style: none;
       margin-left: 0;
@@ -203,7 +203,7 @@
 </p>
 
 <h4>Sources</h4>
-<ul class="source">
+<ul id="source">
   <li class="source3s">
     <i>Fourth Avenue Subway, Brooklyn’s New Transportation Line</i>. (1915).
     Public Service Commission for the First District, New York City, NY.
@@ -275,7 +275,7 @@
   </li>
   <li>
     <!-- https://bklyn.newspapers.com/image/50388940 -->
-    An article in the Brooklyn Daily Eagle from May 8th, 1990, primarily about the purchase of "controlling interest in the Long Island [Rail Road]", provides further details about the Wiman tunnel:
+    An article in the Brooklyn Daily Eagle from May 8th, 1900, Page 1, primarily about the purchase of "controlling interest in the Long Island [Rail Road]", provides further details about the Wiman tunnel:
     <ul>
       <li>
         The "New Jersey and Staten Island Junction Railroad Company" is said to "control the tunnel rights secured by Erastus Wiman in September 1890," one month after the New York Times article.
@@ -307,7 +307,23 @@
       <li>
         <a href="https://bklyn.newspapers.com/image/50370429">6th July 1890, pg 20</a>,
         "Wiman's Tunnel Scheme." "A remedy... is suggested which would render Brooklyn accessible to trunk line railroads ... by the construction of a tunnel under the narrows. This, it is claimed, can be done with a very moderate amount of money proportionate to the advantage to be gained."
-        "The tunnel would enter the narrows somewhere in the vicinity of St. John's church, near Fort Wadsworth and debouching on the Long Insland shore near Fort Hamilton, connecting with the elevated road now being constructed past Greenwood to that point." "
+        "The tunnel would enter the narrows somewhere in the vicinity of St. John's church, near Fort Wadsworth and debouching on the Long Insland shore near Fort Hamilton, connecting with the elevated road now being constructed past Greenwood to that point."
+      </li>
+      <li>
+        <a href=https://bklyn.newspapers.com/image/50445003/?terms=%22erastus%2Bwiman%22>17th September 1890, pg 6</a>,
+        "Wiman's Plan, For Connecting Brooklyn With Staten Island."
+        Is the text of a bill from a <a href="https://en.wikipedia.org/wiki/James_W._Covert">Congressman James W. Covert</a>. TODO: Find the bill?
+        Between "Middletown, in the county of Richmond, and the town of New Utrecht, in the county of Kings."
+        Apart from mentioning Bay Ridge, no futher detail is given.
+        <a href="https://en.wikipedia.org/wiki/New_Utrecht,_Brooklyn">New Utrecht</a> ceased to exist in 1894, but contained Bay Ridge.
+        <a href="https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~25381~1020008:Richmond-County,-Staten-Island---Co">A map of Middletown</a> puts the border on the harbour side at Vanderbilt Avenue.
+        <!--Author: Bien, Joseph Rudolf Author: Vermeule, C. C. (Cornelius Clarkson), 1858-1950 Date: 1891-->
+        This is consistent with the NYTimes route, but not with 6th July 1890 Route. Tunnel is costed at $6 million.
+      </li>
+      <li>
+        <a href="https://bklyn.newspapers.com/image/50445997">23rd December 1890, Page 1</a>
+        An article explaining Wiman's view on freight refers to a a "tunnel, which congress authorized on Saturday last." The 23rd was a Tuesday, so the Saturday in question is the 20th, or possibly the 13th.
+        <a href="https://www.govinfo.gov/app/collection/crecb/_crecb/Volume%20022%20(1891)/GPO-CRECB-1891-pt1-v22">Volume 22, Part 1 of the Congressional Record</a> covers this period (the Fifty-First congress). Indeed on 20th December, page 741, "A bill H.R. 12042" passed its third reading.
       </li>
     </ul>
   </li>
@@ -491,7 +507,8 @@
     ]
     var bando_north_line = [
         [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
-        [40.6300215,-74.0403786],  // Old glory lookout
+        [40.6402696914570, -74.0357385278499], // "across Shore road to a point under water-front property about midway between 67th street produced and 68th street"
+        // [40.6300215,-74.0403786],  // Old glory lookout
     ];
     // var bando_south_line = [
     //     [40.622556404933306, -74.07230968514077],  // Foot of Vanderbilt Avenue.
