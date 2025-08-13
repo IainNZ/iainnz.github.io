@@ -1,164 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130683608-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-130683608-1');
-  </script>
-  
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Iain Dunning</title>
-  <meta name="description" content="Homepage for Iain Dunning">
-  <meta name="author" content="Iain Dunning">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr. Iain Dunning</title>
+  <meta name="description" content="AI researcher and engineer. Head of AI at Hudson River Trading, Chairman at New York Transit Museum.">
+  <meta name="author" content="Iain Dunning">
+  <meta property="og:title" content="Dr. Iain Dunning">
+  <meta property="og:description" content="AI researcher and engineer. Head of AI at Hudson River Trading, Chairman at New York Transit Museum.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.iaindunning.com/">
+  <link rel="canonical" href="https://www.iaindunning.com/">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600"
-   rel="stylesheet" type="text/css">
-
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
   <style>
-  .paperimg {
-    float: right;
-    width: 10%;
-    max-width: 10em;
-    padding-left: 0.5em
-  }
-  .paperdiv {
-    clear: both;
-    padding: 0.5em; display: inline-block; width: 100%
-  }
-  .grey {
-    background-color: #DDDDDD;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Raleway', -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #222;
+    }
+    
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .header-content h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.02em;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+    }
+    
+    .headshot {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 1.75rem 0 1rem;
+    }
+    
+    .job {
+      margin: 1.25rem 0;
+    }
+    
+    .job-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .job-logo {
+      width: 40px;
+      height: 40px;
+      margin-right: 1rem;
+      object-fit: contain;
+    }
+    
+    .job-title, .job-role {
+      font-weight: 600;
+    }
+    
+    .job-title {
+      font-size: 1.25rem;
+    }
+    
+    .job-role {
+      margin-bottom: 0.25rem;
+    }
+    
+    .job-details {
+      margin-left: 56px;
+    }
+    
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 1.75rem 0;
+    }
+    
+    a {
+      color: #06c;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    p {
+      margin-bottom: 0.75rem;
+    }
+    
+    .paper {
+      display: flex;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 0.5rem;
+    }
+    
+    .paper:nth-child(even) {
+      background: #f5f5f5;
+    }
+    
+    .paper-content {
+      flex: 1;
+    }
+    
+    .paper-content > b:first-child {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+    }
+    
+    .paper-img {
+      width: 100px;
+      margin-left: 1rem;
+      border-radius: 0.25rem;
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .header-content h1 {
+        font-size: 2rem;
+      }
+      
+      .headshot {
+        margin: 0 auto;
+      }
+      
+      .paper {
+        flex-direction: column;
+      }
+      
+      .paper-img {
+        width: 100%;
+        max-width: 200px;
+        margin: 1rem 0 0;
+      }
+    }
   </style>
 
 </head>
 <body>
-
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container">
-  <div class="row" style="margin-top: 10%">
-    <div class="nine columns">
+  <div class="header">
+    <div class="header-content">
       <h1>Dr. Iain Dunning</h1>
-      <p>
-      Interested in AI, finance, transit, cities, history.
-      <br>
-      Living in New York City.
-      <br>
-      <b>Contact</b>: iaindunning 📧 gmail.
-      </p>
+      <p>AI, finance, transit, cities, history • NYC • iaindunning 📧 gmail</p>
     </div>
-    <div class="three columns">
-      <img src="images/5DA_1240.jpeg" style="width: 100%">
-    </div>
+    <img src="images/5DA_1240.jpeg" alt="Iain Dunning" class="headshot">
   </div>
 
-  <div class="row">
-  <div class="twelve column">
-    
-    <!-- About
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <section>
     <hr>
     
     <h3>Recent History</h3>
     
-    <h5 style="margin-bottom: 1rem;">
-      <a href="http://www.hudson-trading.com/about/" target="_blank">
-      <img src="images/hrt.svg" style="height: 1.5em; padding-right: 0.5em"></a>
-      Hudson River Trading
-    </h5>
-    <p>
-      <b>Head of AI</b> (August&nbsp;'18 &mdash; <i>now</i>, NYC)<br>
-      I run <a href="https://www.youtube.com/watch?v=5wM5ateK99k" target="_blank">HRT's AI team</a>.
-      We build some of the most advanced models of financial markets in the world, using
-      state-of-art techniques combined with massive compute and data. These models are integral
-      to HRT's trading strategies.
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <a href="http://www.hudson-trading.com/about/">
+          <img src="images/hrt.svg" alt="HRT" class="job-logo">
+        </a>
+        <div class="job-title">Hudson River Trading</div>
+      </div>
+      <div class="job-details">
+        <div class="job-role">Head of AI • August 2018 – Present • NYC</div>
+        <p>
+          I run <a href="https://www.youtube.com/watch?v=5wM5ateK99k">HRT's AI team</a>.
+          We build some of the most advanced models of financial markets in the world, using
+          state-of-art techniques combined with massive compute and data. These models are integral
+          to HRT's trading strategies.
+        </p>
+      </div>
+    </div>
 
-    <h5 style="margin-bottom: 1rem;">
-      <a href="https://www.nytransitmuseum.org/" target="_blank">
-      <img src="images/nytm.png" style="height: 1.5em; padding-right: 0.5em"></a>
-      New York Transit Museum
-    </h5>
-    <p>
-      <b>Chairman of Board</b> (May&nbsp;'25 &mdash; <i>now</i>, NYC)<br>
-      Founded in 1976, the New York Transit Museum is dedicated to preserving and sharing the stories of mass transportation.
-      I serve as the chairman of the 501c3 not-for-profit organization that supports the museum.
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <a href="https://www.nytransitmuseum.org/">
+          <img src="images/nytm.png" alt="NYTM" class="job-logo">
+        </a>
+        <div class="job-title">New York Transit Museum</div>
+      </div>
+      <div class="job-details">
+        <div class="job-role">Chairman of Board • May 2025 – Present • NYC</div>
+        <p>
+          Founded in 1976, the New York Transit Museum is dedicated to preserving and sharing the stories of mass transportation.
+          I serve as the chairman of the 501c3 not-for-profit organization that supports the museum.
+        </p>
+      </div>
+    </div>
 
-    <h5 style="margin-bottom: 1rem;">
-      <a href="https://deepmind.com/" target="_blank">
-      <img src="images/deepmind.png" style="height: 1.5em; padding-right: 0.5em"></a>
-      Google DeepMind
-    </h5>
-    <p>
-      <b>Senior Research Engineer</b> (July&nbsp;'16 &mdash; July&nbsp;'18, London)<br>
-      Applying AI (reinforcement learning) to complex multiagent environments.
-      Trained AI to play capture-the-flag with human-level performance
-      (published in <a href="https://science.sciencemag.org/content/364/6443/859.abstract" target="_blank"><i>Science</i></a>).
-      [<a href="https://arxiv.org/abs/1807.01281" target="_blank">Arxiv</a>,
-      <a href="https://youtu.be/dltN4MxV1RI" target="_blank">Youtube</a>]
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <a href="https://deepmind.com/">
+          <img src="images/deepmind.png" alt="DeepMind" class="job-logo">
+        </a>
+        <div class="job-title">Google DeepMind</div>
+      </div>
+      <div class="job-details">
+        <div class="job-role">Senior Research Engineer • July 2016 – July 2018 • London</div>
+        <p>
+          Applying AI (reinforcement learning) to complex multiagent environments.
+          Trained AI to play capture-the-flag with human-level performance
+          (published in <a href="https://science.sciencemag.org/content/364/6443/859.abstract"><i>Science</i></a>).
+          [<a href="https://arxiv.org/abs/1807.01281">Arxiv</a>,
+          <a href="https://youtu.be/dltN4MxV1RI">Youtube</a>]
+        </p>
+      </div>
+    </div>
     
-    <h5 style="margin-bottom: 1rem;">
-      <a href="https://web.mit.edu/" target="_blank">
-      <img src="images/mit.png" style="height: 1em; padding-right: 0.5em"></a>
-      Massachusetts Institute of Technology
-    </h5>
-    <p>
-      <b>PhD (Operations Research), Teaching Assistant</b> (Sep.&nbsp;'11 &mdash; May&nbsp;'16, Cambridge, MA)<br>
-      At the <a href="https://orc.mit.edu/" target="_blank">Operations
-      Research Center</a>, supervised by Prof.
-      <a href="http://www.mit.edu/~dbertsim/" target="_blank">
-      Dimitris Bertsimas</a>.
-      Thesis: "Advances in robust and adaptive optimization: algorithms, software, and insights".
-      Co-created <a href="https://www.mathopt.org/?nav=boh_2021" target="_blank">award</a>-<a href="https://juliahub.com/blog/informs-computing-society-ics-awards-2016-prize-for-julia-jump-package-for-optimization">winning</a> <a href="https://jump.dev/" target="_blank">JuMP</a> optimization package.
-      Co-created EdX class
-      <a href="https://www.edx.org/course/analytics-edge-mitx-15-071x-3" target="_blank">
-      The Analytics Edge</a>, taught MBA residential
-      versions of the class at MIT
-      <a href="https://mitsloan.mit.edu" target="_blank">Sloan School of
-      Management</a>.
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <a href="https://web.mit.edu/">
+          <img src="images/mit.png" alt="MIT" class="job-logo">
+        </a>
+        <div class="job-title">Massachusetts Institute of Technology</div>
+      </div>
+      <div class="job-details">
+        <div class="job-role">PhD Operations Research, Teaching Assistant • 2011–2016 • Cambridge, MA</div>
+        <p>
+          At the <a href="https://orc.mit.edu/">Operations
+          Research Center</a>, supervised by Prof.
+          <a href="http://www.mit.edu/~dbertsim/">
+          Dimitris Bertsimas</a>.
+          Thesis: "Advances in robust and adaptive optimization: algorithms, software, and insights".
+          Co-created <a href="https://www.mathopt.org/?nav=boh_2021">award</a>-<a href="https://juliahub.com/blog/informs-computing-society-ics-awards-2016-prize-for-julia-jump-package-for-optimization">winning</a> <a href="https://jump.dev/">JuMP</a> optimization package.
+          Co-created EdX class
+          <a href="https://www.edx.org/course/analytics-edge-mitx-15-071x-3">
+          The Analytics Edge</a>, taught MBA residential
+          versions of the class at MIT
+          <a href="https://mitsloan.mit.edu">Sloan School of
+          Management</a>.
+        </p>
+      </div>
+    </div>
     
-    <h5 style="margin-bottom: 1rem;">
-      <img src="images/google.png" style="height: 1em; padding-right: 0.5em">
-      Google
-    </h5>
-    <p>
-      <b>Intern</b> (June&nbsp;13 &mdash; Aug.&nbsp;'13)<br>
-      Worked on search engine crawler. Designed &amp; implemented
-      algorithms to improve the crawl prioritization, analyzed impacts
-      on web-scale datasets with MapReduce/Flume.</li>
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <img src="images/google.png" alt="Google" class="job-logo">
+        <div class="job-title">Google</div>
+      </div>
+      <div class="job-details">
+        <div class="job-role">Intern • Summer 2013</div>
+        <p>
+          Designed algorithms to improve search crawler prioritization,
+          analyzed impacts on web-scale datasets with MapReduce/Flume.
+        </p>
+      </div>
+    </div>
 
-    <h5 style="margin-bottom: 1rem;">
-      <a href="http://www.des.auckland.ac.nz/en.html" target="_blank">
-      <img src="images/uoa.png" style="height: 1.5em; padding-right: 0.5em"></a>
-      University of Auckland
-    </h5>
-    <p>
-      <b>B.E.(Hons), Engineering Science</b> (Mar.&nbsp;'07 &mdash; Dec.&nbsp;'10)<br>
-    </p>
+    <div class="job">
+      <div class="job-header">
+        <a href="http://www.des.auckland.ac.nz/en.html">
+          <img src="images/uoa.png" alt="UoA" class="job-logo">
+        </a>
+        <div class="job-title">University of Auckland</div>
+      </div>
+      <div class="job-details">
+        <div class="job-role">B.E.(Hons) Engineering Science • 2007–2010</div>
+      </div>
+    </div>
     
-    <!-- End Work
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <hr>
     
     <h3>Select Research</h3>
@@ -166,76 +296,79 @@
     <p style="clear: both">
       See <a href="https://scholar.google.com/citations?user=Fc3upZoAAAAJ">
       Google Scholar</a> for full list.<br>
-      <small><i>
-      Some papers use alphabetical ordering -
-      asterix indicates "first" author.
-      </i></small>
+      <small><i>* indicates "first" author when alphabetical ordering used</i></small>
     </p>
 
-    <div class="paperdiv grey"><p>
-      <img src="images/ctf.gif" class="paperimg">
-      <b>Human-level performance in 3D multiplayer games with
-          population-based reinforcement learning</b><br>
-      M. Jaderberg*, W. Czarnecki*, <b>I.&nbsp;Dunning*</b>, ..., T. Graepel.<br>
-      <i>Science, 2019.</i>
-      <a href="https://science.sciencemag.org/content/364/6443/859.abstract" target="_blank">[Science]</a>
-      <a href="https://arxiv.org/abs/1807.01281" target="_blank">[arXiv]</a>
-      <a href="https://youtu.be/dltN4MxV1RI" target="_blank">[video]</a>
-      <a href="https://deepmind.com/blog/capture-the-flag/" target="_blank">[DeepMind blog]</a>
-    </p></div>
+    <div class="paper">
+      <div class="paper-content">
+        <b>Human-level performance in 3D multiplayer games with
+            population-based reinforcement learning</b>
+        M. Jaderberg*, W. Czarnecki*, <b>I.&nbsp;Dunning*</b>, ..., T. Graepel.<br>
+        <i>Science, 2019.</i>
+        <a href="https://science.sciencemag.org/content/364/6443/859.abstract">[Science]</a>
+        <a href="https://arxiv.org/abs/1807.01281">[arXiv]</a>
+        <a href="https://youtu.be/dltN4MxV1RI">[video]</a>
+        <a href="https://deepmind.com/blog/capture-the-flag/">[DeepMind blog]</a>
+      </div>
+      <img src="images/ctf.gif" alt="CTF Research" class="paper-img">
+    </div>
 
-    <div class="paperdiv"><p>
-      <img src="images/qubo.png" class="paperimg">
-      <b>What Works Best When? A Systematic Evaluation of Heuristics for Max-Cut and QUBO</b><br>
-      <b>I.&nbsp;Dunning</b>, S. Gupta, J. Silberholz.<br>
-      <i>INFORMS Journal on Computing, 2018.</i>
-      <a href="http://www-personal.umich.edu/~josilber/SECM_clean.pdf" target="_blank">[PDF]</a>
-    </p></div>
+    <div class="paper">
+      <div class="paper-content">
+        <b>What Works Best When? A Systematic Evaluation of Heuristics for Max-Cut and QUBO</b>
+        <b>I.&nbsp;Dunning</b>, S. Gupta, J. Silberholz.<br>
+        <i>INFORMS Journal on Computing, 2018.</i>
+        <a href="http://www-personal.umich.edu/~josilber/SECM_clean.pdf">[PDF]</a>
+      </div>
+      <img src="images/qubo.png" alt="QUBO Research" class="paper-img">
+    </div>
 
-    <div class="paperdiv grey"><p>
-      <img src="images/jumpsiam.png" class="paperimg">
-      <b>JuMP: A modeling language for mathematical optimization</b><br>
-      <b>I.&nbsp;Dunning</b>, J. Huchette, M. Lubin.<br>
-      <i>SIAM Review, 2017.</i>
-      <a href="https://arxiv.org/abs/1508.01982" target="_blank">[arXiv]</a>
-      <a href="https://github.com/JuliaOpt/JuMP.jl" target="_blank">[JuMP package]</a>
-    </p></div>
+    <div class="paper">
+      <div class="paper-content">
+        <b>JuMP: A modeling language for mathematical optimization</b>
+        <b>I.&nbsp;Dunning</b>, J. Huchette, M. Lubin.<br>
+        <i>SIAM Review, 2017.</i>
+        <a href="https://arxiv.org/abs/1508.01982">[arXiv]</a>
+        <a href="https://github.com/JuliaOpt/JuMP.jl">[JuMP package]</a>
+      </div>
+      <img src="images/jumpsiam.png" alt="JuMP Research" class="paper-img">
+    </div>
     
-    <div class="paperdiv"><p>
-      <img src="images/part.png" class="paperimg">
-      <b>Multistage robust mixed-integer optimization with adaptive partitions</b><br>
-      D. Bertsimas, <b>I.&nbsp;Dunning*</b>.<br>
-      <i>Operations Research, 2016.</i>
-      <a href="http://www.optimization-online.org/DB_HTML/2014/11/4658.html"
-       target="_blank">[Optimization Online]</a>
-    </p></div>
+    <div class="paper">
+      <div class="paper-content">
+        <b>Multistage robust mixed-integer optimization with adaptive partitions</b>
+        D. Bertsimas, <b>I.&nbsp;Dunning*</b>.<br>
+        <i>Operations Research, 2016.</i>
+        <a href="http://www.optimization-online.org/DB_HTML/2014/11/4658.html"
+        >[Optimization Online]</a>
+      </div>
+      <img src="images/part.png" alt="Optimization Research" class="paper-img">
+    </div>
     
-    <div class="paperdiv grey"><p>
-      <img src="images/cutreform.png" class="paperimg">
-      <b>Reformulation versus cutting-planes for robust optimization</b><br>
-      D. Bertsimas, <b>I.&nbsp;Dunning*</b>, M. Lubin*.<br>
-      <i>Computational Management Science, 2016.</i>
-      <a href="http://www.optimization-online.org/DB_HTML/2014/04/4336.html"
-       target="_blank">[Optimization Online]</a>
-    </p></div>
+    <div class="paper">
+      <div class="paper-content">
+        <b>Reformulation versus cutting-planes for robust optimization</b>
+        D. Bertsimas, <b>I.&nbsp;Dunning*</b>, M. Lubin*.<br>
+        <i>Computational Management Science, 2016.</i>
+        <a href="http://www.optimization-online.org/DB_HTML/2014/04/4336.html"
+        >[Optimization Online]</a>
+      </div>
+      <img src="images/cutreform.png" alt="Robust Optimization Research" class="paper-img">
+    </div>
     
-    <div class="paperdiv"><p>
-      <img src="images/ijocjulia.png" class="paperimg">
-      <b>Computing in operations research using Julia</b><br>
-      M. Lubin, <b>I.&nbsp;Dunning</b>.<br>
-      <i>INFORMS Journal on Computing, 2015.</i>
-      <a href="https://arxiv.org/abs/1312.1431" target="_blank">[arXiv]</a>
-    </p></div>
+    <div class="paper">
+      <div class="paper-content">
+        <b>Computing in operations research using Julia</b>
+        M. Lubin, <b>I.&nbsp;Dunning</b>.<br>
+        <i>INFORMS Journal on Computing, 2015.</i>
+        <a href="https://arxiv.org/abs/1312.1431">[arXiv]</a>
+      </div>
+      <img src="images/ijocjulia.png" alt="Julia Research" class="paper-img">
+    </div>
     
-    <!-- End Research
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <hr style="clear: both">
+    <hr>
     
-  </div>  <!-- twelve colum -->
-  </div>  <!-- row -->
-</div>  <!-- container -->
-
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  </section>
+</div>
 </body>
 </html>
